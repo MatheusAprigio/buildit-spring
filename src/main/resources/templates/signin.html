@@ -1,0 +1,9 @@
+<div th:replace="fragments/general :: header(pageTitle='Build It - Login')"></div>
+<form method="post" action="/signin">
+    <input id="email" name="email" type="text">
+    <label for="email">Email</label>
+    <input id="pass" name="password" type="password">
+    <label for="pass">Password</label>
+    <button type="submit">Entrar</button>
+</form>
+<div th:replace="fragments/general :: footer"></div>
