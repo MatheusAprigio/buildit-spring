@@ -40,4 +40,8 @@ public class LoginController {
         return "fragments/dashboard";
     }
 
+    @PostMapping("/logout")
+    public String postLogout(){
+        return "signin";
+    }
 }
