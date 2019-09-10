@@ -22,13 +22,13 @@ public class LoginController {
     }
 
     @PostMapping("signin")
-    public HttpStatus authenticateUser(@PathParam("email") String email,  @PathParam("password") String password) {
+    public String authenticateUser(@PathParam("email") String email,  @PathParam("password") String password) {
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(email, password)
         );
 
-        return HttpStatus.OK;
+        return "redirect:/dashboard";
     }
 
     @GetMapping("signin/logout")

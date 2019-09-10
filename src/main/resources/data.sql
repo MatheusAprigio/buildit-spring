@@ -1,1 +1,1 @@
-INSERT INTO TB_USER values ('buildit@fiap.com.br','Matheus','nimda','ROLE_ADMIN');
+INSERT INTO TB_USER values (1, 'buildit@fiap.com.br','Matheus','nimda','ROLE_ADMIN');

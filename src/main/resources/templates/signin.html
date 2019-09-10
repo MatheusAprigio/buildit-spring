@@ -1,9 +1,42 @@
 <div th:replace="fragments/general :: header(pageTitle='Build It - Login')"></div>
-<form method="post" action="/signin">
-    <input id="email" name="email" type="text">
-    <label for="email">Email</label>
-    <input id="pass" name="password" type="password">
-    <label for="pass">Password</label>
-    <button type="submit">Entrar</button>
-</form>
+<body>
+    <div class="login-page">
+        <div class="login-card">
+            <div class="card horizontal large">
+                <div class="card-image">
+                    <img src="">
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <form method="post" action="/signin">
+                            <h4>Dashboard - Login</h4>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="email" type="email" name="email" class="validate">
+                                    <label for="email">E-mail:</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="password" type="password" name="password" class="validate">
+                                    <label for="password">Senha:</label>
+                                </div>
+                            </div>
+                            <p>
+                                <label>
+                                    <input type="checkbox" class="filled-in" name="remember-me"/>
+                                    <span>Lembrar de mim</span>
+                                </label>
+                            </p>
+                            <button class="btn waves-effect waves-light btn-login" type="submit" name="action">Entrar</button>
+                        </form>
+                    </div>
+                    <div class="card-action">
+                        <center><span>© 2019 - Build It</span></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
 <div th:replace="fragments/general :: footer"></div>
