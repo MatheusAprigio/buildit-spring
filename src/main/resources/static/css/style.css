@@ -1,0 +1,33 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background-color: #26a69a;
+}
+
+.login-page {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+}
+
+.login-card {
+    min-width: 650px;
+}
+
+.btn-login{
+    position: absolute;
+    bottom: 75px;
+    right: 30px;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .login-card {
+        min-width: 100px;
+        max-width: 400px;
+    }
+
+}
