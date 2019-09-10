@@ -1,8 +1,8 @@
 package br.com.buildit.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.ProviderNotFoundException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -23,22 +23,21 @@ public class LoginController {
 
     @PostMapping("signin")
     public String authenticateUser(@PathParam("email") String email,  @PathParam("password") String password) {
+        try {
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(email, password)
+            );
 
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(email, password)
-        );
+            return "redirect:/dashboard";
+        }catch (ProviderNotFoundException e){ }
 
-        return "redirect:/dashboard";
-    }
 
-    @GetMapping("signin/logout")
-    public String logout(){
-        return "signin";
+        return "redirect:/signin?error";
     }
 
     @GetMapping("dashboard")
     public String getDashboard(){
-        return "dashboard";
+        return "fragments/dashboard";
     }
 
 }
