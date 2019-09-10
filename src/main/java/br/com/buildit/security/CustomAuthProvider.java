@@ -21,7 +21,7 @@ public class CustomAuthProvider implements AuthenticationProvider {
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
-        if (userRepository.findByEmailAndPassword(authentication.getName(), authentication.getCredentials().toString()) != null){
+        if (userRepository.findByEmailAndPassword(authentication.getName().trim(), authentication.getCredentials().toString().trim()) != null){
             SimpleGrantedAuthority role = new SimpleGrantedAuthority(
                     userRepository.findByEmailAndPassword(authentication.getName(), authentication.getCredentials().toString()).getRole().toString());
 
