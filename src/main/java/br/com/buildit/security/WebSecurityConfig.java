@@ -42,9 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/signin")
                 .invalidateHttpSession(true)
-                .deleteCookies("JSESSIONID")
-                .and()
-                .rememberMe().key("uniqueAndSecret");
+                .deleteCookies("JSESSIONID");
 
         http.csrf().disable()
                 .headers().frameOptions().disable();

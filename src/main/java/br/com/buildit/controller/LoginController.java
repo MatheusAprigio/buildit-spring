@@ -32,16 +32,11 @@ public class LoginController {
         }catch (ProviderNotFoundException e){ }
 
 
-        return "redirect:/signin?error";
+        return "redirect:/signin?InvalidCredentials";
     }
 
     @GetMapping("dashboard")
     public String getDashboard(){
         return "fragments/dashboard";
-    }
-
-    @PostMapping("/logout")
-    public String postLogout(){
-        return "signin";
     }
 }
