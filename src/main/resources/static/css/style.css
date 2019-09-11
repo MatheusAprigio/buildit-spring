@@ -39,3 +39,12 @@ html, body {
     font-size: 30px;
     margin: 10px;
 }
+
+.navbar-buildit {
+    background-color: #26a69a;
+}
+
+
+.brand-logo{
+    width: 100px;
+}

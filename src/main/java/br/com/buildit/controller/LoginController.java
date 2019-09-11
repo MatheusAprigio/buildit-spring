@@ -11,7 +11,7 @@ public class LoginController {
         return "signin";
     }
 
-    @GetMapping("dashboard")
+    @GetMapping("/")
     public String getDashboard(){
         return "fragments/dashboard";
     }
