@@ -16,12 +16,12 @@ public class CustomErrorView implements ErrorViewResolver {
         modelAndView.addObject("status", status.value());
         switch (status.value()) {
             case 404:
-                modelAndView.addObject("error", "Página não encontrada.");
+                modelAndView.addObject("error", "Ops! Página não encontrada.");
                 modelAndView.addObject("message", "A url para a página '" + model.get("path") + "' não existe.");
                 break;
             case 500:
-                modelAndView.addObject("error", "Ocorreu um erro interno no servidor.");
-                modelAndView.addObject("message", "Ocorreu um erro inesperado, tente mais tarde.");
+                modelAndView.addObject("error", "Ops! Ocorreu um erro inesperado.");
+                modelAndView.addObject("message", "Fique calmo, estamos tratando o problema :)");
                 break;
             default:
                 modelAndView.addObject("error", model.get("error"));

@@ -21,3 +21,21 @@ html, body {
     right: 30px;
 }
 
+/* Error page*/
+.error-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+}
+
+.error-page h1{
+    font-weight: bold;
+    font-size: 160px;
+}
+
+.error-page p{
+    font-size: 30px;
+    margin: 10px;
+}
