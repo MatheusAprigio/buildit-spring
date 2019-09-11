@@ -1,4 +1,27 @@
 <div th:replace="fragments/general :: header(pageTitle='Build It - Dashboard')"></div>
-    Dashboard
-<a href="/logout">Logout</a>
+
+<div class="navbar-fixed">
+    <nav class="navbar navbar-buildit">
+        <div class="nav-wrapper">
+            <a data-activates="slide-out" class="button-collapse hide-on-large-only"><i
+                    class="material-icons">menu</i> </a>
+            <ul class="right">
+                <li><a title="Recarregar página"><i class="material-icons">refresh</i></a></li>
+                <li><a title="Sair" href="/logout"><i class="material-icons">exit_to_app</i></a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<div id="container">
+    <div id="menu">
+        <ul id="slide-out" class="side-nav fixed show-on-large-only">
+            <li><img class="brand-logo" src="image/logo-buildIT.jpg" alt="Logo Build It"></li>
+            <li><a>Produtos</a></li>
+        </ul>
+    </div>
+</div>
+
+
+
+
 <div th:replace="fragments/general :: footer"></div>
