@@ -1,5 +1,8 @@
 <div th:replace="fragments/general :: header(pageTitle='Build It - Erro')"></div>
-    <span th:text="${status}"></span>
-    <h2 th:text="${error}"></h2>
-    <a class="btn btn-primary" type="button" href="javascript:history.back()">Voltar a página anterior</a>
+<div class="error-page my-wrapper valign-wrapper">
+    <h1 th:text="${status}"></h1>
+    <p th:text="${error}"></p>
+    <p th:text="${message}"></p>
+    <a class="waves-effect waves-light btn" href="javascript:history.back()">Voltar a página anterior</a>
+</div>
 <div th:replace="fragments/general :: footer"></div>
