@@ -40,11 +40,22 @@ html, body {
     margin: 10px;
 }
 
+/* Dashboard */
 .navbar-buildit {
     background-color: #26a69a;
 }
 
 
 .brand-logo{
-    width: 100px;
+    width: 75px;
+}
+
+.side-buildit li{
+    font-size: 16px;
+}
+
+.side-buildit> li:first-child{
+    padding-top: 15px;
+    margin-bottom: 30px;
+    text-align: center;
 }
