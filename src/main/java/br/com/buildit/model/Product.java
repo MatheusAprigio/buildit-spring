@@ -41,4 +41,100 @@ public class Product {
 
     @OneToMany(mappedBy = "product")
     List<OrderProduct> orderProducts;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getSKU() {
+        return SKU;
+    }
+
+    public void setSKU(String SKU) {
+        this.SKU = SKU;
+    }
+
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getMeasure() {
+        return measure;
+    }
+
+    public void setMeasure(String measure) {
+        this.measure = measure;
+    }
+
+    public double getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(double unitPrice) {
+        this.unitPrice = unitPrice;
+    }
+
+    public Company getProductCompany() {
+        return productCompany;
+    }
+
+    public void setProductCompany(Company productCompany) {
+        this.productCompany = productCompany;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public List<OrderProduct> getOrderProducts() {
+        return orderProducts;
+    }
+
+    public void setOrderProducts(List<OrderProduct> orderProducts) {
+        this.orderProducts = orderProducts;
+    }
+
+    public Product(String SKU, byte[] photo, String name, String description, String measure, double unitPrice, Company productCompany, Category category, List<OrderProduct> orderProducts) {
+        this.SKU = SKU;
+        this.photo = photo;
+        this.name = name;
+        this.description = description;
+        this.measure = measure;
+        this.unitPrice = unitPrice;
+        this.productCompany = productCompany;
+        this.category = category;
+        this.orderProducts = orderProducts;
+    }
+
+    public Product(){
+
+    }
 }

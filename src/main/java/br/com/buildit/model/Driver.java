@@ -32,4 +32,13 @@ public class Driver extends Customer{
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
     }
+
+    public Driver(Integer driverLicenseNumber, Vehicle vehicle, Order order) {
+        this.driverLicenseNumber = driverLicenseNumber;
+        this.vehicle = vehicle;
+        this.order = order;
+    }
+
+    public Driver() {
+    }
 }

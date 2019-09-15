@@ -24,4 +24,44 @@ public class Category {
     @OneToMany(mappedBy = "category")
     private List<Product> products;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
+    public Category(String description, Category category, List<Product> products) {
+        this.description = description;
+        this.category = category;
+        this.products = products;
+    }
+
+    public Category() {
+    }
 }

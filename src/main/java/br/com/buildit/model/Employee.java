@@ -70,12 +70,20 @@ public class Employee {
         this.id = code;
     }
 
-    public Employee(String email, String name, String password, Role role, Company company) {
+    public Company getEmployeeCompany() {
+        return employeeCompany;
+    }
+
+    public void setEmployeeCompany(Company employeeCompany) {
+        this.employeeCompany = employeeCompany;
+    }
+
+    public Employee(String email, String name, String password, Company employeeCompany, Role role) {
         this.email = email;
         this.name = name;
         this.password = password;
+        this.employeeCompany = employeeCompany;
         this.role = role;
-        this.employeeCompany = company;
     }
 
     public Employee() {

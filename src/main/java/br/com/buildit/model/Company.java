@@ -79,11 +79,21 @@ public class Company {
         this.product = product;
     }
 
-    public Company(String tradingName, String corporateName, String address, Integer nationalRegistry){
+    public List<Employee> getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(List<Employee> employee) {
+        this.employee = employee;
+    }
+
+    public Company(String tradingName, String corporateName, String address, Integer nationalRegistry, List<Employee> employee, Product product) {
         this.tradingName = tradingName;
         this.corporateName = corporateName;
         this.address = address;
         this.nationalRegistry = nationalRegistry;
+        this.employee = employee;
+        this.product = product;
     }
 
     public Company() {

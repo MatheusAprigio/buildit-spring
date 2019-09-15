@@ -27,4 +27,63 @@ public class Vehicle {
     @OneToOne(mappedBy = "vehicle")
     private Driver driver;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getPlateNumber() {
+        return plateNumber;
+    }
+
+    public void setPlateNumber(String plateNumber) {
+        this.plateNumber = plateNumber;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public Integer getReleaseYear() {
+        return releaseYear;
+    }
+
+    public void setReleaseYear(Integer releaseYear) {
+        this.releaseYear = releaseYear;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    public Driver getDriver() {
+        return driver;
+    }
+
+    public void setDriver(Driver driver) {
+        this.driver = driver;
+    }
+
+    public Vehicle(String plateNumber, String model, Integer releaseYear, Color color, Driver driver) {
+        this.plateNumber = plateNumber;
+        this.model = model;
+        this.releaseYear = releaseYear;
+        this.color = color;
+        this.driver = driver;
+    }
+
+    public Vehicle(){
+
+    }
 }
