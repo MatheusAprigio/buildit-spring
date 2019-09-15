@@ -1,6 +1,6 @@
 package br.com.buildit.security;
 
-import br.com.buildit.repository.UserRepository;
+import br.com.buildit.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,14 +16,14 @@ import java.util.List;
 public class CustomAuthProvider implements AuthenticationProvider {
 
     @Autowired
-    UserRepository userRepository;
+    EmployeeRepository employeeRepository;
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
-        if (userRepository.findByEmailAndPassword(authentication.getName().trim(), authentication.getCredentials().toString().trim()) != null){
+        if (employeeRepository.findByEmailAndPassword(authentication.getName().trim(), authentication.getCredentials().toString().trim()) != null){
             SimpleGrantedAuthority role = new SimpleGrantedAuthority(
-                    userRepository.findByEmailAndPassword(authentication.getName(), authentication.getCredentials().toString()).getRole().toString());
+                    employeeRepository.findByEmailAndPassword(authentication.getName(), authentication.getCredentials().toString()).getRole().toString());
 
             List<SimpleGrantedAuthority> lstRoles = new ArrayList<>();
             lstRoles.add(role);

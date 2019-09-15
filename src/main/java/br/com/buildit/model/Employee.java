@@ -1,26 +1,30 @@
 package br.com.buildit.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
+
 
 @Entity
-@Table(name = "TB_USER")
-@SequenceGenerator(name = "user", allocationSize = 1, sequenceName = "SQ_USER")
-public class User implements Serializable {
+@Table(name = "TB_EMPLOYEE")
+@SequenceGenerator(name = "employee", allocationSize = 1, sequenceName = "SQ_EMPLOYEE")
+public class Employee {
 
     @Id
     @GeneratedValue(generator = "user", strategy = GenerationType.SEQUENCE)
-    @Column(name = "cd_user")
-    private Integer code;
+    @Column(name = "cd_employee")
+    private Integer id;
 
     @Column(name = "ds_email", nullable = false, unique = true)
     private String email;
 
-    @Column(name="nm_user", nullable = false)
+    @Column(name="nm_employee", nullable = false)
     private String name;
 
     @Column(name = "ds_pwd", nullable = false)
     private String password;
+
+    @OneToOne
+    @JoinColumn(name = "cd_company")
+    private Company employeeCompany;
 
     @Column(name = "ds_role", nullable = false)
     @Enumerated(EnumType.STRING)
@@ -58,21 +62,22 @@ public class User implements Serializable {
         this.role = role;
     }
 
-    public Integer getCode() {
-        return code;
+    public Integer getId() {
+        return id;
     }
 
-    public void setCode(Integer code) {
-        this.code = code;
+    public void setId(Integer code) {
+        this.id = code;
     }
 
-    public User(String email, String name, String password, Role role) {
+    public Employee(String email, String name, String password, Role role, Company company) {
         this.email = email;
         this.name = name;
         this.password = password;
         this.role = role;
+        this.employeeCompany = company;
     }
 
-    public User() {
+    public Employee() {
     }
 }
