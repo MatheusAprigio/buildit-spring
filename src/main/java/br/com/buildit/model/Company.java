@@ -25,9 +25,67 @@ public class Company {
     @Column(name = "nr_natonal_registry", nullable = false)
     private Integer nationalRegistry;
 
-    @OneToOne(mappedBy = "employeeCompany")
-    private Employee employee;
+    @OneToMany(mappedBy = "employeeCompany")
+    private List<Employee> employee;
 
     @OneToOne(mappedBy = "productCompany")
     private Product product;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTradingName() {
+        return tradingName;
+    }
+
+    public void setTradingName(String tradingName) {
+        this.tradingName = tradingName;
+    }
+
+    public String getCorporateName() {
+        return corporateName;
+    }
+
+    public void setCorporateName(String corporateName) {
+        this.corporateName = corporateName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Integer getNationalRegistry() {
+        return nationalRegistry;
+    }
+
+    public void setNationalRegistry(Integer nationalRegistry) {
+        this.nationalRegistry = nationalRegistry;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Company(String tradingName, String corporateName, String address, Integer nationalRegistry){
+        this.tradingName = tradingName;
+        this.corporateName = corporateName;
+        this.address = address;
+        this.nationalRegistry = nationalRegistry;
+    }
+
+    public Company() {
+    }
 }

@@ -22,8 +22,8 @@ public class Employee {
     @Column(name = "ds_pwd", nullable = false)
     private String password;
 
-    @OneToOne
-    @JoinColumn(name = "cd_company")
+    @ManyToOne
+    @JoinColumn(name = "cd_company", unique = false)
     private Company employeeCompany;
 
     @Column(name = "ds_role", nullable = false)
