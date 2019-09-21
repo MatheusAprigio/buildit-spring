@@ -19,7 +19,7 @@ public class Customer {
     private String name;
 
     @Column(name = "fl_customer", nullable = true)
-    private  byte[] picture;
+    private  String picture;
 
     @Column(name = "ds_email", nullable = false)
     private  String email;
@@ -59,11 +59,11 @@ public class Customer {
         this.name = name;
     }
 
-    public byte[] getPicture() {
+    public String getPicture() {
         return picture;
     }
 
-    public void setPicture(byte[] picture) {
+    public void setPicture(String picture) {
         this.picture = picture;
     }
 
@@ -123,7 +123,7 @@ public class Customer {
         this.order = order;
     }
 
-    public Customer(String name, byte[] picture, String email, Date birthDate, String password, String phoneNumber, Integer cpf, String address, Order order) {
+    public Customer(String name, String picture, String email, Date birthDate, String password, String phoneNumber, Integer cpf, String address, Order order) {
         this.name = name;
         this.picture = picture;
         this.email = email;

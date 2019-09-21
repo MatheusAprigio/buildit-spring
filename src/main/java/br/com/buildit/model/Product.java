@@ -17,7 +17,7 @@ public class Product {
     private String SKU;
 
     @Column(name = "fl_product", nullable = true)
-    private byte[] photo;
+    private String picture;
 
     @Column(name = "nm_product", nullable = false)
     private String name;
@@ -58,12 +58,12 @@ public class Product {
         this.SKU = SKU;
     }
 
-    public byte[] getPhoto() {
-        return photo;
+    public String getPicture() {
+        return picture;
     }
 
-    public void setPhoto(byte[] photo) {
-        this.photo = photo;
+    public void setPicture(String photo) {
+        this.picture = photo;
     }
 
     public String getName() {
@@ -122,9 +122,9 @@ public class Product {
         this.orderProducts = orderProducts;
     }
 
-    public Product(String SKU, byte[] photo, String name, String description, String measure, double unitPrice, Company productCompany, Category category, List<OrderProduct> orderProducts) {
+    public Product(String SKU, String picture, String name, String description, String measure, double unitPrice, Company productCompany, Category category, List<OrderProduct> orderProducts) {
         this.SKU = SKU;
-        this.photo = photo;
+        this.picture = picture;
         this.name = name;
         this.description = description;
         this.measure = measure;
