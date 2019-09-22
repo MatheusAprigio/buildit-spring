@@ -1,4 +1,4 @@
-package br.com.buildit.security;
+package br.com.buildit.config.security;
 
 import br.com.buildit.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;

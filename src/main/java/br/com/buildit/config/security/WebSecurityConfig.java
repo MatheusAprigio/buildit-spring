@@ -1,4 +1,4 @@
-package br.com.buildit.security;
+package br.com.buildit.config.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -28,7 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/api/**")
+                .antMatchers( "/api/**", "/v2/api-docs", "/configuration/ui", "/swagger-resources", "/configuration/security", "/swagger-ui.html", "/webjars/**", "/swagger-resources/configuration/ui", "/swagger-resources/configuration/security")
                 .permitAll()
                 .antMatchers("/dashboard/admin").access("hasRole('ROLE_ADMIN')")
                 .anyRequest().authenticated()
@@ -55,7 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers("/js/**")
                 .antMatchers("/css/**")
                 .antMatchers("/image/**")
-                .antMatchers("/br/com/buildit/security");
+                .antMatchers("/br/com/buildit/config/**");
     }
 
     @Bean
