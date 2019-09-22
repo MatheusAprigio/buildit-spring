@@ -1,6 +1,8 @@
 package br.com.buildit.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,6 +16,7 @@ public class Driver extends Customer{
     @JoinColumn(name = "nr_plate")
     private Vehicle vehicle;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "driver")
     private Order order;
 

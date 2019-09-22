@@ -1,5 +1,8 @@
 package br.com.buildit.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -13,6 +16,7 @@ public class Customer {
     @Id
     @GeneratedValue(generator = "customer", strategy = GenerationType.SEQUENCE)
     @Column(name = "cd_customer")
+    @JsonIgnore
     private Integer id;
 
     @Column(name = "nm_customer", nullable = false)
@@ -25,6 +29,7 @@ public class Customer {
     private  String email;
 
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name = "dt_birth_date", nullable = false)
     private Date birthDate;
 
@@ -41,6 +46,7 @@ public class Customer {
     private String address;
 
     @OneToOne(mappedBy = "customer")
+    @JsonIgnore
     private Order order;
 
     public Integer getId() {

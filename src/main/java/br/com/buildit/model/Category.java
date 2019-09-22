@@ -1,5 +1,7 @@
 package br.com.buildit.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,7 +13,11 @@ public class Category {
     @Id
     @GeneratedValue(generator = "category", strategy = GenerationType.SEQUENCE)
     @Column(name = "cd_category")
+    @JsonIgnore
     private Integer id;
+
+    @Column(name = "nm_category")
+    private String name;
 
     @Column(name = "ds_category", nullable = true)
     private String description;
@@ -22,6 +28,7 @@ public class Category {
 
     @Column(name = "cd_product")
     @OneToMany(mappedBy = "category")
+    @JsonIgnore
     private List<Product> products;
 
     public Integer getId() {
@@ -30,6 +37,14 @@ public class Category {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -56,10 +71,11 @@ public class Category {
         this.products = products;
     }
 
-    public Category(String description, Category category, List<Product> products) {
+    public Category(String description, Category category, List<Product> products, String name) {
         this.description = description;
         this.category = category;
         this.products = products;
+        this.name = name;
     }
 
     public Category() {

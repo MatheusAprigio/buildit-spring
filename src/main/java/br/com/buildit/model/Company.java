@@ -1,5 +1,7 @@
 package br.com.buildit.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,6 +13,7 @@ public class Company {
     @Id
     @GeneratedValue(generator = "company", strategy = GenerationType.SEQUENCE)
     @Column(name = "cd_company")
+    @JsonIgnore
     private Integer id;
 
     @Column(name = "nm_trading_name", nullable = false)
@@ -25,11 +28,13 @@ public class Company {
     @Column(name = "nr_natonal_registry", nullable = false)
     private Integer nationalRegistry;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "employeeCompany")
     private List<Employee> employee;
 
-    @OneToOne(mappedBy = "productCompany")
-    private Product product;
+    @JsonIgnore
+    @OneToMany(mappedBy = "productCompany")
+    private List<Product> product;
 
     public Integer getId() {
         return id;
@@ -71,11 +76,11 @@ public class Company {
         this.nationalRegistry = nationalRegistry;
     }
 
-    public Product getProduct() {
+    public List<Product> getProduct() {
         return product;
     }
 
-    public void setProduct(Product product) {
+    public void setProduct(List<Product> product) {
         this.product = product;
     }
 
@@ -87,7 +92,7 @@ public class Company {
         this.employee = employee;
     }
 
-    public Company(String tradingName, String corporateName, String address, Integer nationalRegistry, List<Employee> employee, Product product) {
+    public Company(String tradingName, String corporateName, String address, Integer nationalRegistry, List<Employee> employee, List<Product> product) {
         this.tradingName = tradingName;
         this.corporateName = corporateName;
         this.address = address;
