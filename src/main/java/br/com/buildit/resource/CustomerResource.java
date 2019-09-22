@@ -18,7 +18,7 @@ public class CustomerResource {
     CustomerRepository customerRepository;
 
     @GetMapping("{email}/{password}")
-    public Customer getCustomerByNameAndEmail(@PathVariable String email, @PathVariable String password){
+    public Customer getCustomerByEmailAndPassword(@PathVariable String email, @PathVariable String password){
         return customerRepository.findByEmailAndPassword(email, password);
     }
 }

@@ -1,5 +1,8 @@
 package br.com.buildit.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -12,12 +15,13 @@ public class Order {
     @Id
     @GeneratedValue(generator = "order", strategy = GenerationType.SEQUENCE)
     @Column(name = "cd_order")
+    @JsonIgnore
     private Integer id;
 
     @Column(name = "vl_order", nullable = false)
     private double orderValue;
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "dt_order", nullable = false)
     private Date orderDate;
 
@@ -29,6 +33,7 @@ public class Order {
     @JoinColumn(name = "cd_driver")
     private Driver driver;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "order")
     List<OrderProduct> orderProducts;
 
@@ -88,7 +93,5 @@ public class Order {
         this.orderProducts = orderProducts;
     }
 
-    public Order(double orderValue) {
-        this.orderValue = orderValue;
-    }
+    public Order() {}
 }

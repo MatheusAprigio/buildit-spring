@@ -1,5 +1,8 @@
 package br.com.buildit.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,10 +13,12 @@ public class OrderProduct{
     @Id
     @GeneratedValue(generator = "oderProduct", strategy = GenerationType.SEQUENCE)
     @Column(name = "cd_order_product")
+    @JsonIgnore
     private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "cd_order")
+    @JsonBackReference
     private Order order;
 
     @ManyToOne

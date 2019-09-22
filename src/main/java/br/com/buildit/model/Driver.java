@@ -1,30 +1,27 @@
 package br.com.buildit.model;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 
 @Entity
 @Table(name = "TB_DRIVER")
-public class Driver extends Customer{
+@AttributeOverride(name = "id", column = @Column(name = "cd_customer"))
+public class Driver extends AppUser{
 
     @Column(name = "nr_driver_license")
-    private Integer driverLicenseNumber;
+    private String driverLicenseNumber;
 
     @OneToOne
-    @JoinColumn(name = "nr_plate")
+    @JoinColumn(name = "cd_vehicle")
     private Vehicle vehicle;
 
-    @JsonIgnore
     @OneToOne(mappedBy = "driver")
     private Order order;
 
-    public Integer getDriverLicenseNumber() {
+    public String getDriverLicenseNumber() {
         return driverLicenseNumber;
     }
 
-    public void setDriverLicenseNumber(Integer driverLicenseNumber) {
+    public void setDriverLicenseNumber(String driverLicenseNumber) {
         this.driverLicenseNumber = driverLicenseNumber;
     }
 
@@ -36,7 +33,7 @@ public class Driver extends Customer{
         this.vehicle = vehicle;
     }
 
-    public Driver(Integer driverLicenseNumber, Vehicle vehicle, Order order) {
+    public Driver(String driverLicenseNumber, Vehicle vehicle, Order order) {
         this.driverLicenseNumber = driverLicenseNumber;
         this.vehicle = vehicle;
         this.order = order;
