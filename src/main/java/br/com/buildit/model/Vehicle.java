@@ -12,7 +12,6 @@ public class Vehicle {
     @Id
     @GeneratedValue(generator = "vehicle",strategy = GenerationType.SEQUENCE)
     @Column(name = "cd_vehicle")
-    @JsonIgnore
     private Integer id;
 
     @Column(name = "nr_plate", unique = true, nullable = false, length = 15)

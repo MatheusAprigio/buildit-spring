@@ -13,7 +13,6 @@ public class Category {
     @Id
     @GeneratedValue(generator = "category", strategy = GenerationType.SEQUENCE)
     @Column(name = "cd_category")
-    @JsonIgnore
     private Integer id;
 
     @Column(name = "nm_category")

@@ -11,9 +11,8 @@ import javax.persistence.*;
 public class OrderProduct{
 
     @Id
-    @GeneratedValue(generator = "oderProduct", strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator = "orderProduct", strategy = GenerationType.SEQUENCE)
     @Column(name = "cd_order_product")
-    @JsonIgnore
     private Integer id;
 
     @ManyToOne

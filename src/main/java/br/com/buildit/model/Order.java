@@ -15,7 +15,6 @@ public class Order {
     @Id
     @GeneratedValue(generator = "order", strategy = GenerationType.SEQUENCE)
     @Column(name = "cd_order")
-    @JsonIgnore
     private Integer id;
 
     @Column(name = "vl_order", nullable = false)

@@ -13,7 +13,6 @@ public class Product {
     @Id
     @GeneratedValue(generator = "product", strategy = GenerationType.SEQUENCE)
     @Column(name = "cd_product")
-    @JsonIgnore
     private String id;
 
     @Column(name = "nm_sku", nullable = false)

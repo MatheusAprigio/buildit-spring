@@ -13,7 +13,6 @@ public class Company {
     @Id
     @GeneratedValue(generator = "company", strategy = GenerationType.SEQUENCE)
     @Column(name = "cd_company")
-    @JsonIgnore
     private Integer id;
 
     @Column(name = "nm_trading_name", nullable = false)

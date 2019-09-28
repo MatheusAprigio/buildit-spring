@@ -13,7 +13,7 @@ import java.util.List;
 
 @Api(description = "Operações para manipulação/visualização de empresas")
 @RestController
-@RequestMapping("api/v1/company")
+@RequestMapping("api/v1/companies")
 public class CompanyResource {
 
     @Autowired
