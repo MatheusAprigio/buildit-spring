@@ -1,0 +1,91 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+.login-page {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    background-color: #26a69a;
+}
+
+.login-card {
+    min-width: 650px;
+}
+
+.btn-login{
+    position: absolute;
+    bottom: 75px;
+    right: 30px;
+}
+
+/* Error page*/
+.error-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+}
+
+.error-page h1{
+    font-weight: bold;
+    font-size: 160px;
+}
+
+.error-page p{
+    font-size: 30px;
+    margin: 10px;
+}
+
+/* Dashboard */
+.navbar-buildit {
+    background-color: #26a69a;
+}
+
+
+.brand-logo{
+    width: 75px;
+}
+
+.side-buildit li{
+    font-size: 16px;
+}
+
+.side-buildit> li:first-child{
+    padding-top: 15px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.side-buildit a{
+    cursor: pointer; !important;
+}
+
+.side-buildit span{
+    color: rgba(0,0,0,0.87);
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    height: 48px;
+    line-height: 48px;
+    padding: 0 32px;
+}
+
+@media (min-width: 481px) and (max-width: 815px) {
+
+    .side-buildit span{
+        padding: 0 16px;
+    }
+
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+
+    .side-buildit span{
+        padding: 0 16px;
+    }
+
+}
