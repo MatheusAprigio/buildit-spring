@@ -74,12 +74,19 @@ html, body {
     padding: 0 32px;
 }
 
+.custom-collapsible-header{
+    padding: 0 60px; !important;
+}
+
+.side-nav a{
+    padding: 0 16px;
+}
+
 @media (min-width: 481px) and (max-width: 815px) {
 
     .side-buildit span{
         padding: 0 16px;
     }
-
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
@@ -87,5 +94,5 @@ html, body {
     .side-buildit span{
         padding: 0 16px;
     }
-
 }
+
