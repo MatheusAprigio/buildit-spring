@@ -1,6 +1,7 @@
 # buildit-spring
 FIAP - Projeto de AM (Oracle - 2019)
 
+
 Configurando o projeto localmente (Oracle):
 
 1.  Clone o repositório
@@ -12,6 +13,7 @@ mvn install:install-file -Dfile=<path-to-file>/ojdbc7.jar -DgroupId=com.oracle -
 4. Mude o acesso ao BD da aplicação no arquivo **application.properties**
 5. Execute um Build e depois execute o programa
 
+
 Acessando banco de dados em memória (H2 database):
 1.  Clone o repositório
 2. Execute o projeto
@@ -19,6 +21,3 @@ Acessando banco de dados em memória (H2 database):
 
 Ps* Caso você seja redirecionado para a página de login da aplicação logue com as seguintes credenciais
 E-mail: buildit@fiap.com.br / senha: nimda
-
-
-
