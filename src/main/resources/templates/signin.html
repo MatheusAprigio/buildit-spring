@@ -1,4 +1,8 @@
-<div th:replace="fragments/general :: header(pageTitle='Build It - Login')"></div>
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/general :: head(pageTitle='Build It - Login')"></div>
+</head>
 <body>
 <div class="login-page">
     <div class="login-card">
@@ -33,5 +37,7 @@
         </div>
     </div>
 </div>
+<div th:replace="fragments/general :: scripts"></div>
 </body>
-<div th:replace="fragments/general :: footer"></div>
+</html>
+

@@ -9,4 +9,6 @@ public interface EmployeeRepository extends JpaRepository <Employee, Integer> {
 
     Employee findByEmailAndPassword(String name, String password);
     void deleteByEmail(String email);
+
+    Employee findByEmail(String email);
 }
