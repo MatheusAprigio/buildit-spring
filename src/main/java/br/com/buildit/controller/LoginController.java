@@ -26,6 +26,6 @@ public class LoginController {
         Employee employee = employeeRepository.findByEmail(email);
         model.addAttribute("name", employee.getName());
 
-        return "fragments/dashboard";
+        return "forms/homepage";
     }
 }
