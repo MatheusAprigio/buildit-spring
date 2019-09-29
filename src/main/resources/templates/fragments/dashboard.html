@@ -17,23 +17,7 @@
         <div id="menu">
             <ul id="slide-out" class="side-nav fixed show-on-large-only side-buildit">
                 <li><img class="brand-logo" th:src="@{/image/logo-buildIT.jpg}" alt="Logo Build It"></li>
-                <li><span th:text="${'Olá, ' + name}"></span></li>
-                <li><a href="/"><i class="material-icons">pie_chart</i>Visão Geral</a></li>
-                <li><a href="/products"><i class="material-icons">label</i>Produtos</a></li>
-                <li>
-                    <ul class="collapsible collapsible-accordion">
-                        <li>
-                            <a class="collapsible-header custom-collapsible-header"><i
-                                    class="material-icons">account_circle</i>Usuários<i class="material-icons right">arrow_drop_down</i></a>
-                            <div class="collapsible-body">
-                                <ul>
-                                    <li><a href="/employee/admin">Administradores</a></li>
-                                    <li><a href="/employee/user">Usuários (Caixa)</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
+                <li><span th:text="${'Olá, ' + employee.name}"></span></li>
                 <li>
                     <ul class="collapsible collapsible-accordion">
                         <li>
@@ -49,6 +33,27 @@
                         </li>
                     </ul>
                 </li>
+                <div th:if="${employee.role == T(br.com.buildit.model.Role).ROLE_ADMIN}">
+                    <li><a href="/products"><i class="material-icons">label</i>Produtos</a></li>
+                </div>
+                <div th:if="${employee.role == T(br.com.buildit.model.Role).ROLE_ADMIN}">
+                    <li>
+                        <ul class="collapsible collapsible-accordion">
+                            <li>
+                                <a class="collapsible-header custom-collapsible-header"><i
+                                        class="material-icons">account_circle</i>Usuários<i
+                                        class="material-icons right">arrow_drop_down</i></a>
+                                <div class="collapsible-body">
+                                    <ul>
+                                        <li><a href="/employee/admin">Administradores</a></li>
+                                        <li><a href="/employee/user">Usuários (Caixa)</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </div>
+                <li><a href="/"><i class="material-icons">pie_chart</i>Visão Geral</a></li>
             </ul>
         </div>
     </div>

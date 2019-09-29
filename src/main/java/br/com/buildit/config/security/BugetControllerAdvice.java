@@ -19,7 +19,7 @@ public class BugetControllerAdvice {
         try{
             String email = SecurityContextHolder.getContext().getAuthentication().getName();
             Employee employee = employeeRepository.findByEmail(email);
-            model.addAttribute("name", employee.getName());
+            model.addAttribute("employee", employee);
         }catch (NullPointerException e){}
     }
 }
