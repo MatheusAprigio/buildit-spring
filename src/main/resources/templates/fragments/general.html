@@ -8,8 +8,9 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title> Fragment generic title</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-    <link href="/webjars/materializecss/0.98.0/css/materialize.min.css" rel="stylesheet"/>
+    <link th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}" rel="stylesheet"/>
+    <link th:href="@{/webjars/materializecss/0.98.0/css/materialize.min.css}" rel="stylesheet"/>
+    <link th:href="@{/webjars/datatables/1.10.19/css/jquery.dataTables.min.css}">
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="icon" th:href="@{/image/logo-buildIT.jpg}">
 </head>
@@ -17,8 +18,9 @@
 
 <div layout:fragment="content"></div>
 
-<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
-<script src="/webjars/materializecss/0.98.0/js/materialize.min.js"></script>
+<script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/materializecss/0.98.0/js/materialize.min.js}"></script>
+<script th:src="@{/webjars/datatables/1.10.19/js/jquery.dataTables.min.js}"></script>
 <script th:src="@{/js/main.js}"></script>
 </body>
 </html>

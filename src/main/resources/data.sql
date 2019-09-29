@@ -10,7 +10,7 @@ INSERT INTO TB_PRODUCT values(2, 'ORC0001', 'Just an example of a product descri
 INSERT INTO TB_PRODUCT values(3, 'ORC9999', 'Just an example of a product description', '2 inches', 'Oracle Product (2)', '', 9.00, 2, 2 );
 
 INSERT INTO TB_EMPLOYEE values (1, 'buildit@fiap.com.br','Matheus','nimda','ROLE_ADMIN', 1);
-INSERT INTO TB_EMPLOYEE values (2, 'user@fiap.com.br','Matheus','nimda','ROLE_USER', 1);
+INSERT INTO TB_EMPLOYEE values (2, 'user@fiap.com.br','Ana Julia','nimda','ROLE_USER', 1);
 
 INSERT  INTO TB_CUSTOMER values (1, 'AV JUNDIAI, 69 - Apto 190', {ts '1997-12-24 18:47:52.69'}, '42933007643', 'customer@gmail.com', 'Augusta','customer', '(11)99113-3700', null);
 
