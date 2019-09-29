@@ -16,10 +16,10 @@
     <div id="container">
         <div id="menu">
             <ul id="slide-out" class="side-nav fixed show-on-large-only side-buildit">
-                <li><img class="brand-logo" src="image/logo-buildIT.jpg" alt="Logo Build It"></li>
+                <li><img class="brand-logo" th:src="@{/image/logo-buildIT.jpg}" alt="Logo Build It"></li>
                 <li><span th:text="${'Olá, ' + name}"></span></li>
-                <li><a><i class="material-icons">pie_chart</i>Visão Global</a></li>
-                <li><a><i class="material-icons">label</i>Produtos</a></li>
+                <li><a href="/"><i class="material-icons">pie_chart</i>Visão Geral</a></li>
+                <li><a href="/products"><i class="material-icons">label</i>Produtos</a></li>
                 <li>
                     <ul class="collapsible collapsible-accordion">
                         <li>
@@ -27,8 +27,8 @@
                                     class="material-icons">account_circle</i>Usuários<i class="material-icons right">arrow_drop_down</i></a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li><a href="#">Administradores</a></li>
-                                    <li><a href="#">Usuários (Caixa)</a></li>
+                                    <li><a href="/employee/admin">Administradores</a></li>
+                                    <li><a href="/employee/user">Usuários (Caixa)</a></li>
                                 </ul>
                             </div>
                         </li>

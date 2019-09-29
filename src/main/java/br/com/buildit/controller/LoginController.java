@@ -20,12 +20,7 @@ public class LoginController {
     }
 
     @GetMapping("/")
-    public String getDashboard(Model model){
-
-        String email = SecurityContextHolder.getContext().getAuthentication().getName();
-        Employee employee = employeeRepository.findByEmail(email);
-        model.addAttribute("name", employee.getName());
-
+    public String getDashboard(){
         return "forms/overview";
     }
 }

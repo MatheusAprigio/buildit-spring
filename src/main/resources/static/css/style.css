@@ -82,6 +82,10 @@ html, body {
     padding: 0 16px;
 }
 
+.content-dashboard{
+    padding-left: 150px;
+}
+
 @media (min-width: 481px) and (max-width: 815px) {
 
     .side-buildit span{
