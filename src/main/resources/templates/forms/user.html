@@ -8,14 +8,28 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Build It - Dashboard</title>
+    <title>Build It - Login</title>
 </head>
 <body>
 <div layout:fragment="content" th:remove="tag">
     <div th:insert="fragments/dashboard"></div>
-    <div class="container">
-
-
+    <div class="container content-dashboard">
+        <table id="table-admins">
+            <thead>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th></th>
+            <th></th>
+            </thead>
+            <tbody>
+            <tr th:each="admin : ${admins}">
+                <td th:text="${admin.name}"></td>
+                <td th:text="${admin.email}"></td>
+                <td><a class="waves-effect waves-light btn red darken-1"><i class="material-icons left">delete_forever</i>Deletar</a></td>
+                <td><a class="waves-effect waves-light btn blue darken-2"><i class="material-icons left">edit</i>Atualizar</a></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 </body>
