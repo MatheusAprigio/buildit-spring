@@ -15,6 +15,16 @@
     <div th:insert="fragments/dashboard"></div>
     <div class="container content-dashboard">
         <div class="alert alert-success" th:if="${msg != null}" th:text="${msg}"></div>
+        <div class="row">
+            <div class="col s6">
+                <a class="waves-effect waves-light btn green darken-1 modal-trigger" href="#add-modal">
+                    <i class="material-icons left">add_box</i>Adicionar
+                </a>
+            </div>
+            <div class="col s6">
+
+            </div>
+        </div>
         <table id="table-admins">
             <thead>
             <th>Nome</th>
@@ -33,7 +43,8 @@
                     <input type="hidden" th:value="${admin.id}">
                 </td>
                 <td>
-                    <a class="waves-effect waves-light btn blue darken-2 modal-trigger btn-edit edit-admin" href="#edit-modal">
+                    <a class="waves-effect waves-light btn blue darken-2 modal-trigger btn-edit edit-admin"
+                       href="#edit-modal">
                         <i class="material-icons left">edit</i>Atualizar
                     </a>
                     <input type="hidden" th:value="${admin.id}">
@@ -80,10 +91,48 @@
                 </div>
                 <div class="row">
                     <div class="col s6">
-                        <button th:type="button" class="modal-close waves-effect btn-flat red darken-1 white-text">Cancelar</button>
+                        <button th:type="button" class="modal-close waves-effect btn-flat red darken-1 white-text">
+                            Cancelar
+                        </button>
                     </div>
                     <div class="col s6">
                         <button th:type="submit" class="waves-effect btn-flat blue darken-2 white-text">Salvar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="add-modal" class="modal modal-edit-user">
+        <div class="modal-content center-align">
+            <h5>Adicionar administrador <i class="material-icons">person</i></h5>
+            <form method="post" th:action="@{/employee/admins/add}">
+                <input th:type="hidden" name="role" th:value="ROLE_ADMIN">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input th:type="text" name="name" value="&nbsp;">
+                        <label for="name">Nome</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input th:type="text" name="email" value="&nbsp;">
+                        <label for="email">E-mail</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input th:type="password" name="password">
+                        <label for="password">Senha</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s6">
+                        <button th:type="button" class="modal-close waves-effect btn-flat red darken-1 white-text">
+                            Cancelar
+                        </button>
+                    </div>
+                    <div class="col s6">
+                        <button th:type="submit" class="waves-effect btn-flat blue darken-2 white-text">Adicionar</button>
                     </div>
                 </div>
             </form>

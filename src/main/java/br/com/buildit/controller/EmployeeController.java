@@ -37,6 +37,14 @@ public class EmployeeController {
         return "redirect:list";
     }
 
+    @PostMapping("admins/add")
+    public String addAdmin(Employee employee, RedirectAttributes redirectAttributes) {
+        
+        employeeRepository.save(employee);
+        redirectAttributes.addFlashAttribute("msg", "Administrador cadastrado com sucesso!");
+        return "redirect:list";
+    }
+
     @PostMapping("admins/edit")
     public String editAdmin(Employee employee, RedirectAttributes redirectAttributes) {
 

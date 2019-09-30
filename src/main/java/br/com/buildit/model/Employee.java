@@ -1,9 +1,12 @@
 package br.com.buildit.model;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 
 
 @Entity
+@Component
 @Table(name = "TB_EMPLOYEE")
 @SequenceGenerator(name = "employee", allocationSize = 1, sequenceName = "SQ_EMPLOYEE")
 public class Employee {
