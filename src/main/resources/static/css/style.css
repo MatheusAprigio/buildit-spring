@@ -157,6 +157,13 @@ html, body {
     color: #491217;
 }
 
+.modal-edit-user{
+    width: 360px;
+}
+
+.white-text{
+    color: #ffffff;
+}
 
 /* Media Queries*/
 @media (min-width: 320px) and (max-width: 480px) {
