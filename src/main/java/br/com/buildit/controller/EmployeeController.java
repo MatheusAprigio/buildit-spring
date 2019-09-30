@@ -22,7 +22,7 @@ public class EmployeeController {
     @Resource
     CustomContextHolder customContextHolder;
 
-    @GetMapping("admins")
+    @GetMapping("admins/list")
     public String listAllAdmins(Model model) {
 
         model.addAttribute("admins", employeeRepository.findByRoleAndCompany(Role.ROLE_ADMIN, customContextHolder.getCompany()));
@@ -34,7 +34,7 @@ public class EmployeeController {
 
         employeeRepository.deleteById(id);
         redirectAttributes.addFlashAttribute("msg", "Administrador deletado com sucesso!");
-        return "redirect:";
+        return "redirect:list";
     }
 
     @PostMapping("admins/edit")
@@ -42,10 +42,10 @@ public class EmployeeController {
 
         employeeRepository.save(employee);
         redirectAttributes.addFlashAttribute("msg", "Administrador alterado com sucesso!");
-        return "redirect:";
+        return "redirect:list";
     }
 
-    @GetMapping("users")
+    @GetMapping("users/list")
     public String listAllCommonUsers(Model model) {
 
         model.addAttribute("users", employeeRepository.findByRoleAndCompany(Role.ROLE_USER, customContextHolder.getCompany()));
@@ -57,6 +57,6 @@ public class EmployeeController {
 
         employeeRepository.deleteById(id);
         redirectAttributes.addFlashAttribute("msg", "Usuário deletado com sucesso!");
-        return "redirect:";
+        return "redirect:list";
     }
 }
