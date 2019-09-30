@@ -228,3 +228,11 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
     }
 
 }
+
+@media  (min-height:  600px)
+and (max-width: 1380px)
+and (orientation: landscape){
+    .content-dashboard {
+        padding-left: 170px;
+    }
+}
