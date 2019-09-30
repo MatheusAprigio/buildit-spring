@@ -12,5 +12,10 @@ $(document).ready(function(){
 
 $(".btn-remove").click(function () {
     var id = $(this).siblings().val();
-    $("#modal-id").val(id);
+    $("#delete-id").val(id);
+})
+
+$(".btn-edit").click(function () {
+    var id = $(this).siblings().val();
+    $("#edit-id").val(id);
 })

@@ -29,12 +29,20 @@ public class EmployeeController {
         return "forms/admins";
     }
 
-    @PostMapping("admins")
+    @PostMapping("admins/delete")
     public String deleteAdmin(Integer id, RedirectAttributes redirectAttributes) {
 
         employeeRepository.deleteById(id);
         redirectAttributes.addFlashAttribute("msg", "Administrador deletado com sucesso!");
-        return "redirect:admins";
+        return "redirect:";
+    }
+
+    @PostMapping("admins/edit")
+    public String editAdmin(Employee employee, RedirectAttributes redirectAttributes) {
+
+        employeeRepository.save(employee);
+        redirectAttributes.addFlashAttribute("msg", "Administrador alterado com sucesso!");
+        return "redirect:";
     }
 
     @GetMapping("users")
@@ -44,11 +52,11 @@ public class EmployeeController {
         return "forms/users";
     }
 
-    @PostMapping("users")
+    @PostMapping("users/delete")
     public String deleteUser(Integer id, RedirectAttributes redirectAttributes) {
 
         employeeRepository.deleteById(id);
         redirectAttributes.addFlashAttribute("msg", "Usuário deletado com sucesso!");
-        return "redirect:users";
+        return "redirect:";
     }
 }

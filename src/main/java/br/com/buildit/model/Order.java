@@ -33,7 +33,7 @@ public class Order {
     private Driver driver;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "order")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "order")
     List<OrderProduct> orderProducts;
 
     public Integer getId() {

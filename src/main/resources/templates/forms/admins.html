@@ -30,10 +30,14 @@
                     <a class="waves-effect waves-light btn red darken-1 modal-trigger btn-remove" href="#remove-modal">
                         <i class="material-icons left">delete_forever</i>Deletar
                     </a>
-                    <input type="hidden" id="id" th:value="${admin.id}">
+                    <input type="hidden" th:value="${admin.id}">
                 </td>
-                <td><a class="waves-effect waves-light btn blue darken-2 modal-trigger" href="#edit-modal"><i
-                        class="material-icons left">edit</i>Atualizar</a></td>
+                <td>
+                    <a class="waves-effect waves-light btn blue darken-2 modal-trigger btn-edit" href="#edit-modal">
+                        <i class="material-icons left">edit</i>Atualizar
+                    </a>
+                    <input type="hidden" th:value="${admin.id}">
+                </td>
             </tr>
             </tbody>
         </table>
@@ -43,19 +47,27 @@
             <p>Você tem certeza que deseja deletar este item?</p>
         </div>
         <div class="modal-footer">
-            <form method="post" th:action="@{/employee/admins}">
-                <input th:type="hidden" id="modal-id" name="id">
-                <button type="submit" class="waves-effect btn-flat btn-delete">Sim</button>
-                <button type="button" class="modal-close waves-effect btn-flat">Não</button>
+            <form method="post" th:action="@{/employee/admins/delete}">
+                <input th:type="hidden" id="delete-id" name="id">
+                <button th:type="submit" class="waves-effect btn-flat btn-delete">Sim</button>
+                <button th:type="button" class="modal-close waves-effect btn-flat">Não</button>
             </form>
         </div>
     </div>
-    <div id="edit-modal" class="modal">
+    <div id="edit-modal" class="modal modal-remove">
         <div class="modal-content">
-            <p>A bunch of text</p>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+            <form method="post" th:action="@{/employee/admins/edit}">
+                <input th:type="hidden" id="edit-id" name="id">
+                <input th:type="hidden" name="role" th:value="ROLE_ADMIN">
+
+                <input th:type="text" name="email">
+                <input th:type="text" name="name">
+                <input th:type="text" name="password">
+                <div>
+                    <button th:type="submit" class="waves-effect btn-flat btn-delete">Salvar</button>
+                    <button th:type="button" class="modal-close waves-effect btn-flat">Cancelar</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

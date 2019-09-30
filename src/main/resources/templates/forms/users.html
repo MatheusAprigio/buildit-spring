@@ -43,7 +43,7 @@
             <p>Você tem certeza que deseja deletar este item?</p>
         </div>
         <div class="modal-footer">
-            <form method="post" th:action="@{/employee/users}">
+            <form method="post" th:action="@{/employee/users/delete}">
                 <input th:type="hidden" id="modal-id" name="id">
                 <button type="submit" class="waves-effect btn-flat btn-delete">Sim</button>
                 <button type="button" class="modal-close waves-effect btn-flat">Não</button>
