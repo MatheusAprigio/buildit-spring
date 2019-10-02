@@ -8,14 +8,56 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Build It - Login</title>
+    <title>Build It - Dashboard</title>
 </head>
 <body>
 <div layout:fragment="content" th:remove="tag">
     <div th:insert="fragments/dashboard"></div>
     <div class="container content-dashboard">
+        <div class="alert alert-success" th:if="${msg != null}" th:text="${msg}"></div>
+        <div class="row">
+            <div class="col s6">
+                <a class="waves-effect waves-light btn green darken-1 modal-trigger" href="#add-modal">
+                    <i class="material-icons left">add_box</i>Adicionar
+                </a>
+            </div>
+            <div class="col s6">
 
-
+            </div>
+        </div>
+        <table id="table-products">
+            <thead>
+            <th>SKU</th>
+            <th>Nome do produto</th>
+            <th>Descrição</th>
+            <th>Uni. Medida</th>
+            <th>Valor unitário</th>
+            <th></th>
+            <th></th>
+            </thead>
+            <tbody>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.SKU}"></td>
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.description}"></td>
+                <td th:text="${product.measure}"></td>
+                <td th:text="${product.unitPrice}"></td>
+                <td>
+                    <a class="waves-effect waves-light btn red darken-1 modal-trigger btn-remove" href="#remove-modal">
+                        <i class="material-icons left">delete_forever</i>Deletar
+                    </a>
+                    <input type="hidden" th:value="${product.id}">
+                </td>
+                <td>
+                    <a class="waves-effect waves-light btn blue darken-2 modal-trigger btn-edit edit-admin"
+                       href="#edit-modal">
+                        <i class="material-icons left">edit</i>Atualizar
+                    </a>
+                    <input type="hidden" th:value="${product.id}">
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 </body>

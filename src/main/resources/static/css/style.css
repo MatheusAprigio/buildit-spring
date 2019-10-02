@@ -3,6 +3,7 @@ html, body {
     width: 100%;
 }
 
+/* LOGIN PAGE */
 .login-page {
     align-items: center;
     display: flex;
@@ -21,7 +22,7 @@ html, body {
     right: 30px;
 }
 
-/* Error page*/
+/* ERROR PAGE*/
 .error-page {
     display: flex;
     flex-direction: column;
@@ -40,11 +41,15 @@ html, body {
     margin: 10px;
 }
 
-/* Dashboard */
+/* NAVBAR */
 .navbar-buildit {
     background-color: #26a69a;
 }
 
+/* SIDE NAV */
+.side-nav{
+    width: 230px;
+}
 
 .brand-logo {
     width: 75px;
@@ -62,7 +67,6 @@ html, body {
 
 .side-buildit a {
     cursor: pointer;
-!important;
 }
 
 .side-buildit span {
@@ -77,7 +81,6 @@ html, body {
 
 .custom-collapsible-header {
     padding: 0 60px;
-!important;
 }
 
 .side-nav a {
@@ -89,10 +92,12 @@ html, body {
     margin-top: 40px !important;
 }
 
+/* MODALS */
 .modal-remove {
     width: 300px;
 }
 
+/* ALERTS */
 .alert {
     position: relative;
     padding: 0.75rem 1.25rem;
@@ -165,7 +170,7 @@ html, body {
     color: #ffffff;
 }
 
-/* Media Queries*/
+/* MEDIA QUERIES*/
 @media (min-width: 320px) and (max-width: 480px) {
 
     .side-buildit span {
@@ -213,7 +218,7 @@ and (max-height: 1366px)
 and (orientation: landscape)
 and (-webkit-min-device-pixel-ratio: 1.5) {
     .content-dashboard {
-        padding-left: 160px;
+        padding-left: 110px;
     }
 
 }
@@ -224,14 +229,14 @@ and (max-height: 1366px)
 and (orientation: portrait)
 and (-webkit-min-device-pixel-ratio: 1.5) {
     .content-dashboard {
-        padding-left: 180px;
+        padding-left: 130px;
     }
 }
 
 
 @media (min-width: 1025px) and (max-width: 1280px) {
     .content-dashboard {
-        padding-left: 150px;
+        padding-left: 100px;
     }
 
 }
@@ -240,6 +245,6 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
 and (max-width: 1380px)
 and (orientation: landscape){
     .content-dashboard {
-        padding-left: 170px;
+        padding-left: 100px;
     }
 }
