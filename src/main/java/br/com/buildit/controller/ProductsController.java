@@ -20,6 +20,7 @@ public class ProductsController {
     @GetMapping("list")
     public String listAllProducts(Model model){
 
+        model.addAttribute("products", productRepository.findAll());
         return "forms/products";
     }
 

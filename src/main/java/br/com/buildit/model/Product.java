@@ -13,9 +13,9 @@ public class Product {
     @Id
     @GeneratedValue(generator = "product", strategy = GenerationType.SEQUENCE)
     @Column(name = "cd_product")
-    private String id;
+    private Integer id;
 
-    @Column(name = "nm_sku", nullable = false)
+    @Column(name = "nm_sku", nullable = false, unique = true)
     private String SKU;
 
     @Column(name = "fl_product", nullable = true)
@@ -41,11 +41,11 @@ public class Product {
     @JsonIgnore
     List<OrderProduct> orderProducts;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

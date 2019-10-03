@@ -59,6 +59,18 @@
             </tbody>
         </table>
     </div>
+    <div id="remove-modal" class="modal modal-remove">
+        <div class="modal-content">
+            <p>Você tem certeza que deseja deletar este item?</p>
+        </div>
+        <div class="modal-footer">
+            <form method="post" th:action="@{/products/delete}">
+                <input th:type="hidden" id="delete-id" name="id">
+                <button th:type="submit" class="waves-effect btn-flat">Sim</button>
+                <button th:type="button" class="modal-close waves-effect btn-flat">Não</button>
+            </form>
+        </div>
+    </div>
 </div>
 </body>
 </html>
