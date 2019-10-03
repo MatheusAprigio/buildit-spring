@@ -33,7 +33,7 @@ public class ProductResource {
     @ApiOperation(value = "Retorna uma lista com todos os produtos a partir do nome de uma categoria")
     @GetMapping("categories")
     List<Product> getProductsByCategory(@RequestParam String name){
-        return productRepository.findByCategoryName(name);
+        return productRepository.findByCategory_Name(name);
     }
 
 }

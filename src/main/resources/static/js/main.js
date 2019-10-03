@@ -20,8 +20,16 @@ $(".btn-edit").click(function () {
 });
 
 $(".edit-admin").click(function () {
-    var AdminName = $(this).closest("tr").find('td:eq(0)').text();
-    $("#name").val(AdminName);
+    var adminName = $(this).closest("tr").find('td:eq(0)').text();
+    $("#name").val(adminName);
+
+    var email = $(this).closest("tr").find('td:eq(1)').text();
+    $("#email").val(email)
+});
+
+$(".edit-user").click(function () {
+    var userName = $(this).closest("tr").find('td:eq(0)').text();
+    $("#name").val(userName);
 
     var email = $(this).closest("tr").find('td:eq(1)').text();
     $("#email").val(email)

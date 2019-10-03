@@ -22,7 +22,7 @@
                 </a>
             </div>
             <div class="col s6">
-
+                <!-- Barra de pesquisa aqui -->
             </div>
         </div>
         <table id="table-admins">
@@ -65,7 +65,7 @@
             </form>
         </div>
     </div>
-    <div id="edit-modal" class="modal modal-edit-user">
+    <div id="edit-modal" class="modal modal-small">
         <div class="modal-content center-align">
             <h5>Atualizar administrador <i class="material-icons">person</i></h5>
             <form method="post" th:action="@{/employee/admins/edit}">
@@ -102,7 +102,7 @@
             </form>
         </div>
     </div>
-    <div id="add-modal" class="modal modal-edit-user">
+    <div id="add-modal" class="modal modal-small">
         <div class="modal-content center-align">
             <h5>Adicionar administrador <i class="material-icons">person</i></h5>
             <form method="post" th:action="@{/employee/admins/add}">
@@ -132,7 +132,8 @@
                         </button>
                     </div>
                     <div class="col s6">
-                        <button th:type="submit" class="waves-effect btn-flat blue darken-2 white-text">Adicionar</button>
+                        <button th:type="submit" class="waves-effect btn-flat blue darken-2 white-text">Adicionar
+                        </button>
                     </div>
                 </div>
             </form>

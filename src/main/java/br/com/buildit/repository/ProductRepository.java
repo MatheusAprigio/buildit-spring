@@ -9,12 +9,8 @@ import java.util.List;
 
 @Repository
 public interface ProductRepository extends JpaRepository <Product, Integer> {
-
-    @Override
-    List<Product> findAll();
-
-    @Query(value = "SELECT p FROM Product p where p.category.name = ?1")
-    List<Product> findByCategoryName(String categoryName);
+    
+    List<Product> findByCategory_Name(String categoryName);
 
     List<Product> findByNameContainingIgnoreCase(String name);
 

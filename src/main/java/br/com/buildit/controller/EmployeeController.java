@@ -9,8 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.annotation.Resource;
-
 @Controller
 @RequestMapping("employee")
 public class EmployeeController {
@@ -21,7 +19,7 @@ public class EmployeeController {
     @GetMapping("admins/list")
     public String listAllAdmins(Model model) {
 
-        model.addAttribute("admins", employeeRepository.findByRoleAndCompany(Role.ROLE_ADMIN));
+        model.addAttribute("admins", employeeRepository.findByRole(Role.ROLE_ADMIN));
         return "forms/admins";
     }
 
@@ -52,7 +50,7 @@ public class EmployeeController {
     @GetMapping("users/list")
     public String listAllCommonUsers(Model model) {
 
-        model.addAttribute("users", employeeRepository.findByRoleAndCompany(Role.ROLE_USER));
+        model.addAttribute("users", employeeRepository.findByRole(Role.ROLE_USER));
         return "forms/users";
     }
 
@@ -61,6 +59,22 @@ public class EmployeeController {
 
         employeeRepository.deleteById(id);
         redirectAttributes.addFlashAttribute("msg", "Usuário deletado com sucesso!");
+        return "redirect:list";
+    }
+
+    @PostMapping("users/add")
+    public String addUser(Employee employee, RedirectAttributes redirectAttributes) {
+
+        employeeRepository.save(employee);
+        redirectAttributes.addFlashAttribute("msg", "Usário cadastrado com sucesso!");
+        return "redirect:list";
+    }
+
+    @PostMapping("users/edit")
+    public String editUser(Employee employee, RedirectAttributes redirectAttributes) {
+
+        employeeRepository.save(employee);
+        redirectAttributes.addFlashAttribute("msg", "Usuário alterado com sucesso!");
         return "redirect:list";
     }
 }

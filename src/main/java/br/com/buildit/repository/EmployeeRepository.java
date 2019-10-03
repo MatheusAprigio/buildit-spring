@@ -12,10 +12,10 @@ import java.util.List;
 public interface EmployeeRepository extends JpaRepository <Employee, Integer> {
 
     Employee findByEmailAndPassword(String name, String password);
+
     void deleteByEmail(String email);
 
     Employee findByEmail(String email);
 
-    @Query("Select e from Employee e where e.role = ?1")
-    List<Employee> findByRoleAndCompany(Role role);
+    List<Employee> findByRole(Role role);
 }
