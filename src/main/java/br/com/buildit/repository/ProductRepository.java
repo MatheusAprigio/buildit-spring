@@ -13,16 +13,9 @@ public interface ProductRepository extends JpaRepository <Product, Integer> {
     @Override
     List<Product> findAll();
 
-    @Query(value = "SELECT p FROM Product p where p.productCompany.corporateName = ?1")
-    List<Product> findByCompany(String name);
-
     @Query(value = "SELECT p FROM Product p where p.category.name = ?1")
     List<Product> findByCategoryName(String categoryName);
 
-    @Query(value = "SELECT p FROM Product p where p.category.name = ?1 and p.productCompany.corporateName = ?2 ")
-    List<Product> findByCategoryNameAndCompany(String companyName, String categoryName);
-
     List<Product> findByNameContainingIgnoreCase(String name);
 
-    List<Product> findByProductCompany_CorporateName(String name);
 }

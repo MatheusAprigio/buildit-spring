@@ -1,6 +1,5 @@
 package br.com.buildit.controller;
 
-import br.com.buildit.config.security.CustomContextHolder;
 import br.com.buildit.model.Employee;
 import br.com.buildit.model.Role;
 import br.com.buildit.repository.EmployeeRepository;
@@ -19,13 +18,10 @@ public class EmployeeController {
     @Autowired
     EmployeeRepository employeeRepository;
 
-    @Resource
-    CustomContextHolder customContextHolder;
-
     @GetMapping("admins/list")
     public String listAllAdmins(Model model) {
 
-        model.addAttribute("admins", employeeRepository.findByRoleAndCompany(Role.ROLE_ADMIN, customContextHolder.getCompany()));
+        model.addAttribute("admins", employeeRepository.findByRoleAndCompany(Role.ROLE_ADMIN));
         return "forms/admins";
     }
 
@@ -56,7 +52,7 @@ public class EmployeeController {
     @GetMapping("users/list")
     public String listAllCommonUsers(Model model) {
 
-        model.addAttribute("users", employeeRepository.findByRoleAndCompany(Role.ROLE_USER, customContextHolder.getCompany()));
+        model.addAttribute("users", employeeRepository.findByRoleAndCompany(Role.ROLE_USER));
         return "forms/users";
     }
 

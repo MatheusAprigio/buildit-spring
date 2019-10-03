@@ -1,6 +1,5 @@
 package br.com.buildit.controller;
 
-import br.com.buildit.config.security.CustomContextHolder;
 import br.com.buildit.model.Product;
 import br.com.buildit.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +17,9 @@ public class ProductsController {
     @Autowired
     ProductRepository productRepository;
 
-    @Autowired
-    CustomContextHolder customContextHolder;
-
     @GetMapping("list")
     public String listAllProducts(Model model){
 
-        model.addAttribute("products", productRepository.findByProductCompany_CorporateName(customContextHolder.getCompany()));
         return "forms/products";
     }
 

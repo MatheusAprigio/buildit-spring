@@ -25,10 +25,6 @@ public class Employee {
     @Column(name = "ds_pwd", nullable = false)
     private String password;
 
-    @ManyToOne
-    @JoinColumn(name = "cd_company", unique = false)
-    private Company employeeCompany;
-
     @Column(name = "ds_role", nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -73,19 +69,10 @@ public class Employee {
         this.id = code;
     }
 
-    public Company getEmployeeCompany() {
-        return employeeCompany;
-    }
-
-    public void setEmployeeCompany(Company employeeCompany) {
-        this.employeeCompany = employeeCompany;
-    }
-
-    public Employee(String email, String name, String password, Company employeeCompany, Role role) {
+    public Employee(String email, String name, String password, Role role) {
         this.email = email;
         this.name = name;
         this.password = password;
-        this.employeeCompany = employeeCompany;
         this.role = role;
     }
 

@@ -34,10 +34,6 @@ public class Product {
     private double unitPrice;
 
     @ManyToOne
-    @JoinColumn(name = "cd_company")
-    private Company productCompany;
-
-    @ManyToOne
     @JoinColumn(name = "cd_category")
     private Category category;
 
@@ -101,14 +97,6 @@ public class Product {
         this.unitPrice = unitPrice;
     }
 
-    public Company getProductCompany() {
-        return productCompany;
-    }
-
-    public void setProductCompany(Company productCompany) {
-        this.productCompany = productCompany;
-    }
-
     public Category getCategory() {
         return category;
     }
@@ -125,14 +113,13 @@ public class Product {
         this.orderProducts = orderProducts;
     }
 
-    public Product(String SKU, String picture, String name, String description, String measure, double unitPrice, Company productCompany, Category category, List<OrderProduct> orderProducts) {
+    public Product(String SKU, String picture, String name, String description, String measure, double unitPrice, Category category, List<OrderProduct> orderProducts) {
         this.SKU = SKU;
         this.picture = picture;
         this.name = name;
         this.description = description;
         this.measure = measure;
         this.unitPrice = unitPrice;
-        this.productCompany = productCompany;
         this.category = category;
         this.orderProducts = orderProducts;
     }
