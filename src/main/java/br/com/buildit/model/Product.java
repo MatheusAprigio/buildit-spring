@@ -37,7 +37,7 @@ public class Product {
     @JoinColumn(name = "cd_category")
     private Category category;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     List<OrderProduct> orderProducts;
 

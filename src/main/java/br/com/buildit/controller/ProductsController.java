@@ -25,7 +25,7 @@ public class ProductsController {
     }
 
     @PostMapping("delete")
-    public String deleteProdcut(Integer id, RedirectAttributes redirectAttributes) {
+    public String deleteProduct(Integer id, RedirectAttributes redirectAttributes) {
 
         productRepository.deleteById(id);
         redirectAttributes.addFlashAttribute("msg", "Produto deletado com sucesso!");
