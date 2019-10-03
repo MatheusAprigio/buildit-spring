@@ -27,6 +27,7 @@ $(".edit-admin").click(function () {
     $("#email").val(email)
 });
 
+
 $(".edit-user").click(function () {
     var userName = $(this).closest("tr").find('td:eq(0)').text();
     $("#name").val(userName);
