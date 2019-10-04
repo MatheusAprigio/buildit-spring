@@ -15,12 +15,12 @@ public class OrderProduct{
     @Column(name = "cd_order_product")
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "cd_order")
     @JsonBackReference
     private Order order;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "cd_product")
     private Product product;
 

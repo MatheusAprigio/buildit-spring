@@ -1,5 +1,6 @@
 package br.com.buildit.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -32,7 +33,7 @@ public class Order {
     private Driver driver;
 
     @JsonManagedReference
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "order")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, mappedBy = "order")
     List<OrderProduct> orderProducts;
 
     public Integer getId() {

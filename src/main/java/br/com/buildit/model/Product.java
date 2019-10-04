@@ -37,10 +37,10 @@ public class Product {
     @JoinColumn(name = "cd_category")
     private Category category;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     @JsonIgnore
     List<OrderProduct> orderProducts;
-
+    
     public Integer getId() {
         return id;
     }
