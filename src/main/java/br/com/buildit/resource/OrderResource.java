@@ -27,14 +27,14 @@ public class OrderResource {
     @ApiOperation(value = "Cria um novo pedido associado obrigatoriamente a um cliente ")
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    private HttpStatus saveOrder(@RequestBody Order order) {
+    Order saveOrder(@RequestBody Order order) {
+        return orderRepository.save(order);
+    }
 
-        try {
-            orderRepository.save(order);
-            return HttpStatus.CREATED;
-        } catch (Exception e) {
-
-        }
-        return HttpStatus.BAD_REQUEST;
+    @ApiOperation(value = "Deleta um pedido já existente")
+    @DeleteMapping("{id}")
+    @ResponseStatus(code = HttpStatus.OK)
+    void deleteProductById(@PathVariable Integer id) {
+        orderRepository.deleteById(id);
     }
 }

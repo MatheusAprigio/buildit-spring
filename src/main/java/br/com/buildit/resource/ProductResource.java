@@ -20,13 +20,13 @@ public class ProductResource {
 
     @ApiOperation(value = "Retorna uma lista com todos os produtos")
     @GetMapping
-    public List<Product> getAllProducts(){
+    List<Product> getAllProducts(){
         return productRepository.findAll();
     }
 
     @ApiOperation(value = "Retorna uma lista com todos os produtos por nome de produto, sendo o nome incompleto ou completo (LIKE do SQL)")
     @GetMapping("filter")
-    public List<Product> getProductsByName(@RequestParam String name){
+    List<Product> getProductsByName(@RequestParam String name){
         return productRepository.findByNameContainingIgnoreCase(name);
     }
 

@@ -18,7 +18,7 @@ public class CustomerResource {
 
     @ApiOperation(value = "Retorna um único usuário (Cliente final) a partir de um usuário e senha")
     @PostMapping
-    public Customer getCustomerByEmailAndPassword(@RequestParam String email, @RequestParam String password){
+    Customer getCustomerByEmailAndPassword(@RequestParam String email, @RequestParam String password) {
         return customerRepository.findByEmailAndPassword(email, password);
     }
 }
