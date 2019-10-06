@@ -35,3 +35,27 @@ $(".edit-user").click(function () {
     var email = $(this).closest("tr").find('td:eq(1)').text();
     $("#email").val(email)
 });
+
+$(".edit-product").click(function () {
+    var picture = $(this).closest("tr").find('td:eq(0) > img').attr("src")
+
+    $("#picture").val(picture)
+    picture == "" ? picture = "/image/no-image.svg" : null;
+    $("#img-product").attr("src", picture);
+
+
+    var userName = $(this).closest("tr").find('td:eq(1)').text();
+    $("#sku").val(userName);
+
+    var email = $(this).closest("tr").find('td:eq(2)').text();
+    $("#name").val(email)
+
+    var userName = $(this).closest("tr").find('td:eq(3)').text();
+    $("#description").val(userName);
+
+    var userName = $(this).closest("tr").find('td:eq(4)').text();
+    $("#measure").val(userName);
+
+    var userName = $(this).closest("tr").find('td:eq(5)').text();
+    $("#unitPrice").val(userName);
+});

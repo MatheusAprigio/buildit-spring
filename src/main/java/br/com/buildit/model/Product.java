@@ -27,7 +27,7 @@ public class Product {
     @Column(name = "ds_product", nullable = false)
     private String description;
 
-    @Column(name = "ds_measure", nullable = true)
+    @Column(name = "ds_measure", nullable = false)
     private String measure;
 
     @Column(name = "vl_product", nullable = false)

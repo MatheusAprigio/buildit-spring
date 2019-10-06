@@ -27,6 +27,7 @@
         </div>
         <table id="table-products">
             <thead>
+            <th>Imagem</th>
             <th>SKU</th>
             <th>Nome do produto</th>
             <th>Descrição</th>
@@ -37,6 +38,8 @@
             </thead>
             <tbody>
             <tr th:each="product : ${products}">
+                <td th:if="${product.picture != ''}" th:value="${product.picture}"><img class="responsive-img" th:src="${product.picture}" width="60px" height="60px"></td>
+                <td th:if="${product.picture == ''}" ><img class="responsive-img" src="/image/no-image.svg" width="60px" height="60px" alt="Product IMG"></td>
                 <td th:text="${product.SKU}"></td>
                 <td th:text="${product.name}"></td>
                 <td th:text="${product.description}"></td>
@@ -49,7 +52,7 @@
                     <input type="hidden" th:value="${product.id}">
                 </td>
                 <td>
-                    <a class="waves-effect waves-light btn blue darken-2 modal-trigger btn-edit edit-admin"
+                    <a class="waves-effect waves-light btn blue darken-2 modal-trigger btn-edit edit-product"
                        href="#edit-modal">
                         <i class="material-icons left">edit</i>Atualizar
                     </a>
@@ -71,6 +74,114 @@
             </form>
         </div>
     </div>
+    <div id="edit-modal" class="modal modal-medium">
+        <div class="modal-content center-align">
+            <h5>Atualizar Produto <i class="material-icons">shopping_basket</i></h5>
+            <form method="post" th:action="@{/products/edit}">
+                <input th:type="hidden" id="edit-id" name="id">
+                <div class="row">
+                    <div class="col s4">
+                        <img class="responsive-img" id="img-product" src="/image/no-image.svg">
+                    </div>
+                    <div class="col s8">
+                        <div class="input-field">
+                            <input th:type="text" name="picture" id="picture" value="&nbsp;">
+                            <label>URL da imagem:</label>
+                        </div>
+                        <div class="input-field">
+                            <input th:type="text" name="name" id="name" value="&nbsp;">
+                            <label for="name">Nome:</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s4">
+                        <input th:type="text" name="SKU" id="sku" value="&nbsp;">
+                        <label>SKU</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input th:type="text" id="measure" name="measure" value="&nbsp;">
+                        <label>Medida</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input th:type="text" name="unitPrice" id="unitPrice" value="&nbsp;">
+                        <label>Valor Un.</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea class="materialize-textarea" id="description" name="description"></textarea>
+                        <label>Descrição</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s6">
+                        <button th:type="button" class="modal-close waves-effect btn-flat red darken-1 white-text">
+                            Cancelar
+                        </button>
+                    </div>
+                    <div class="col s6">
+                        <button th:type="submit" class="waves-effect btn-flat blue darken-2 white-text">Atualizar
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="add-modal" class="modal modal-medium">
+        <div class="modal-content center-align">
+            <h5>Adicionar Produto <i class="material-icons">shopping_basket</i></h5>
+            <form method="post" th:action="@{/products/add}">
+                <div class="row">
+                    <div class="col s4">
+                        <img class="responsive-img" src="/image/no-image.svg">
+                    </div>
+                    <div class="col s8">
+                        <div class="input-field">
+                            <input th:type="text" name="picture">
+                            <label>URL da imagem:</label>
+                        </div>
+                        <div class="input-field">
+                            <input th:type="text" name="name">
+                            <label for="name">Nome:</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s4">
+                        <input th:type="text" name="SKU">
+                        <label>SKU</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input th:type="text" name="measure">
+                        <label>Medida</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input th:type="text" name="unitPrice">
+                        <label>Valor Un.</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea class="materialize-textarea" name="description"></textarea>
+                        <label>Descriçao</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s6">
+                        <button th:type="button" class="modal-close waves-effect btn-flat red darken-1 white-text">
+                            Cancelar
+                        </button>
+                    </div>
+                    <div class="col s6">
+                        <button th:type="submit" class="waves-effect btn-flat blue darken-2 white-text">Adicionar
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 </body>
 </html>
+

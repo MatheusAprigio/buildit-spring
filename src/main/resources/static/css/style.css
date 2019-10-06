@@ -97,6 +97,13 @@ html, body {
     width: 300px;
 }
 
+.modal-medium{
+    width: 700px;
+}
+
+.modal-small{
+    width: 360px;
+}
 /* ALERTS */
 .alert {
     position: relative;
@@ -162,10 +169,6 @@ html, body {
     color: #491217;
 }
 
-.modal-small{
-    width: 360px;
-}
-
 .white-text{
     color: #ffffff;
 }
@@ -183,6 +186,14 @@ html, body {
 
     .btn {
         width: 80px;
+    }
+
+    .modal-medium{
+        width: 360px;
+    }
+
+    .modal-content  h5{
+        padding-bottom: 15px;
     }
 }
 

@@ -44,7 +44,7 @@ public class ProductsController {
     public String editAdmin(Product product, RedirectAttributes redirectAttributes) {
 
         productRepository.save(product);
-        redirectAttributes.addFlashAttribute("msg", "Produto alterado com sucesso!");
+        redirectAttributes.addFlashAttribute("msg", "Produto atualizado com sucesso!");
         return "redirect:list";
     }
 }
