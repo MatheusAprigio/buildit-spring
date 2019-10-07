@@ -1,6 +1,7 @@
 package br.com.buildit.controller;
 
 import br.com.buildit.model.Product;
+import br.com.buildit.repository.CategoryRepository;
 import br.com.buildit.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,9 +18,13 @@ public class ProductsController {
     @Autowired
     ProductRepository productRepository;
 
+    @Autowired
+    CategoryRepository categoryRepository;
+
     @GetMapping("list")
     public String listAllProducts(Model model){
 
+        model.addAttribute("categories", categoryRepository.findAll());
         model.addAttribute("products", productRepository.findAll());
         return "forms/products";
     }

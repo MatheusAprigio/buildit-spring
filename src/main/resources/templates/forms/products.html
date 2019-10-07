@@ -31,6 +31,7 @@
             <th>SKU</th>
             <th>Nome do produto</th>
             <th>Descrição</th>
+            <th>Categoria</th>
             <th>Uni. Medida</th>
             <th>Valor unitário</th>
             <th></th>
@@ -42,7 +43,8 @@
                 <td th:if="${product.picture == ''}" ><img class="responsive-img" src="/image/no-image.svg" width="60px" height="60px" alt="Product IMG"></td>
                 <td th:text="${product.SKU}"></td>
                 <td th:text="${product.name}"></td>
-                <td th:text="${product.description}"></td>
+                <td class="truncate" th:text="${product.description}"></td>
+                <td th:text="${product.category.name}"></td>
                 <td th:text="${product.measure}"></td>
                 <td th:text="${product.unitPrice}"></td>
                 <td>
@@ -95,15 +97,23 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s4">
+                    <div class="input-field col s3">
                         <input th:type="text" name="SKU" id="sku" value="&nbsp;">
                         <label>SKU</label>
                     </div>
-                    <div class="input-field col s4">
+                    <div class="input-field col s3">
                         <input th:type="text" id="measure" name="measure" value="&nbsp;">
                         <label>Medida</label>
                     </div>
-                    <div class="input-field col s4">
+                    <div class="col s3">
+                        <label>Categoria</label>
+                        <select class="browser-default" name="category">
+                            <option th:each="category : ${categories}"
+                                    th:value="${category.id}" th:text="${category.name}"></option>
+                        </select>
+
+                    </div>
+                    <div class="input-field col s3">
                         <input th:type="text" name="unitPrice" id="unitPrice" value="&nbsp;">
                         <label>Valor Un.</label>
                     </div>
@@ -121,7 +131,7 @@
                         </button>
                     </div>
                     <div class="col s6">
-                        <button th:type="submit" class="waves-effect btn-flat blue darken-2 white-text">Atualizar
+                        <button th:type="submit" class="waves-effect btn-flat blue darken-2 white-text">Salvar
                         </button>
                     </div>
                 </div>
@@ -148,15 +158,23 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s4">
+                    <div class="input-field col s3">
                         <input th:type="text" name="SKU">
                         <label>SKU</label>
                     </div>
-                    <div class="input-field col s4">
+                    <div class="input-field col s3">
                         <input th:type="text" name="measure">
                         <label>Medida</label>
                     </div>
-                    <div class="input-field col s4">
+                    <div class="col s3">
+                        <label>Categoria</label>
+                        <select class="browser-default" name="category">
+                            <option th:each="category : ${categories}"
+                                    th:value="${category.id}" th:text="${category.name}"></option>
+                        </select>
+
+                    </div>
+                    <div class="input-field col s3">
                         <input th:type="text" name="unitPrice">
                         <label>Valor Un.</label>
                     </div>

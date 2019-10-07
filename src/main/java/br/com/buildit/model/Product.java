@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "TB_PRODUCT")
-@SequenceGenerator(name = "product", allocationSize = 1, sequenceName = "SQ_PRODUCT")
+@SequenceGenerator(name = "product", allocationSize = 1, sequenceName = "SQ_PRODUCT" , initialValue = 4)
 public class Product {
 
     @Id

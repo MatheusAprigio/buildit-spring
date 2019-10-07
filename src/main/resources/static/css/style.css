@@ -3,6 +3,14 @@ html, body {
     width: 100%;
 }
 
+.truncate {
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow: hidden;
+    max-width:250px;
+    padding-top: 20px;
+}
+
 /* LOGIN PAGE */
 .login-page {
     align-items: center;
@@ -250,6 +258,14 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
         padding-left: 100px;
     }
 
+    .truncate {
+        white-space: nowrap;
+        text-overflow:ellipsis;
+        overflow: hidden;
+        max-width:200px;
+        padding-top: 20px;
+    }
+
 }
 
 @media  (min-height:  600px)
@@ -257,5 +273,13 @@ and (max-width: 1380px)
 and (orientation: landscape){
     .content-dashboard {
         padding-left: 100px;
+    }
+
+    .truncate {
+        white-space: nowrap;
+        text-overflow:ellipsis;
+        overflow: hidden;
+        max-width:200px;
+        padding-top: 20px;
     }
 }

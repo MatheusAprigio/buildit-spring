@@ -2,9 +2,9 @@ INSERT INTO TB_CATEGORY values (1, 'Category description', 'Principal', null);
 INSERT INTO TB_CATEGORY values (2, 'Category description', 'Others', 1);
 
 
-INSERT INTO TB_PRODUCT values(1, 'BDI0001', 'Just an example of a product description', '0.5 KG', 'Build It Product', '', 10.00, 1);
-INSERT INTO TB_PRODUCT values(2, 'ORC0001', 'Just an example of a product description', '1 KG', 'Oracle Product', '', 5.00, 1);
-INSERT INTO TB_PRODUCT values(3, 'ORC9999', 'Just an example of a product description', '2 inches', 'Oracle Product (2)', '', 9.00, 2);
+INSERT INTO TB_PRODUCT values(1, 'BD0001', 'Just an example of a product description Just an example of a product description', '8"', 'Alicate universal 8" em aço carbono', '', 19.50, 1);
+INSERT INTO TB_PRODUCT values(2, 'BD0002', 'Just an example of a product description', '1 Un/ 18L', 'Tinta Coral Acrilica Fosca', 'erro', 279.90, 1);
+INSERT INTO TB_PRODUCT values(3, 'BD0003', 'Just an example of a product description', '30 x 30', 'Tijolo', 'https://appsisecommerces3.s3.amazonaws.com/clientes/cliente11837/produtos/7274/Z8569.jpg', 3.00, 2);
 
 INSERT INTO TB_EMPLOYEE values (1, 'buildit@fiap.com.br','Matheus','nimda','ROLE_ADMIN');
 INSERT INTO TB_EMPLOYEE values (4, 'thiago@fiap.com.br','Thiago','nimda','ROLE_ADMIN');

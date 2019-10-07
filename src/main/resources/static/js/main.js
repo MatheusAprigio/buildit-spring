@@ -7,6 +7,11 @@ $('.button-collapse').sideNav({
 
 $(document).ready(function(){
     $('.modal').modal();
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems, options);
+    });
 });
 
 $(".btn-remove").click(function () {
@@ -27,7 +32,6 @@ $(".edit-admin").click(function () {
     $("#email").val(email)
 });
 
-
 $(".edit-user").click(function () {
     var userName = $(this).closest("tr").find('td:eq(0)').text();
     $("#name").val(userName);
@@ -37,12 +41,11 @@ $(".edit-user").click(function () {
 });
 
 $(".edit-product").click(function () {
-    var picture = $(this).closest("tr").find('td:eq(0) > img').attr("src")
+    var picture = $(this).closest("tr").find('td:eq(0) > img').attr("src");
 
     $("#picture").val(picture)
     picture == "" ? picture = "/image/no-image.svg" : null;
     $("#img-product").attr("src", picture);
-
 
     var userName = $(this).closest("tr").find('td:eq(1)').text();
     $("#sku").val(userName);
@@ -53,9 +56,9 @@ $(".edit-product").click(function () {
     var userName = $(this).closest("tr").find('td:eq(3)').text();
     $("#description").val(userName);
 
-    var userName = $(this).closest("tr").find('td:eq(4)').text();
+    var userName = $(this).closest("tr").find('td:eq(5)').text();
     $("#measure").val(userName);
 
-    var userName = $(this).closest("tr").find('td:eq(5)').text();
+    var userName = $(this).closest("tr").find('td:eq(6)').text();
     $("#unitPrice").val(userName);
 });
