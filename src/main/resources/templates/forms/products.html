@@ -22,7 +22,12 @@
                 </a>
             </div>
             <div class="col s6">
-
+                <div class="input-field">
+                    <form method="get" th:action="@{/products/list/filter}">
+                        <input th:type="text" name="filter" value="&nbsp;">
+                        <label>Pesquisar</label>
+                    </form>
+                </div>
             </div>
         </div>
         <table id="table-products">
@@ -39,8 +44,11 @@
             </thead>
             <tbody>
             <tr th:each="product : ${products}">
-                <td th:if="${product.picture != ''}" th:value="${product.picture}"><img class="responsive-img" th:src="${product.picture}" width="60px" height="60px"></td>
-                <td th:if="${product.picture == ''}" ><img class="responsive-img" src="/image/no-image.svg" width="60px" height="60px" alt="Product IMG"></td>
+                <td th:if="${product.picture != ''}" th:value="${product.picture}"><img class="responsive-img"
+                                                                                        th:src="${product.picture}"
+                                                                                        width="60px" height="60px"></td>
+                <td th:if="${product.picture == ''}"><img class="responsive-img" src="/image/no-image.svg" width="60px"
+                                                          height="60px" alt="Product IMG"></td>
                 <td th:text="${product.sku}"></td>
                 <td th:text="${product.name}"></td>
                 <td class="truncate" th:text="${product.description}"></td>
