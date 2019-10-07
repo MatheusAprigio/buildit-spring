@@ -41,7 +41,7 @@
             <tr th:each="product : ${products}">
                 <td th:if="${product.picture != ''}" th:value="${product.picture}"><img class="responsive-img" th:src="${product.picture}" width="60px" height="60px"></td>
                 <td th:if="${product.picture == ''}" ><img class="responsive-img" src="/image/no-image.svg" width="60px" height="60px" alt="Product IMG"></td>
-                <td th:text="${product.SKU}"></td>
+                <td th:text="${product.sku}"></td>
                 <td th:text="${product.name}"></td>
                 <td class="truncate" th:text="${product.description}"></td>
                 <td th:text="${product.category.name}"></td>
@@ -98,7 +98,7 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s3">
-                        <input th:type="text" name="SKU" id="sku" value="&nbsp;">
+                        <input th:type="text" name="sku" id="sku" value="&nbsp;">
                         <label>SKU</label>
                     </div>
                     <div class="input-field col s3">
@@ -159,7 +159,7 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s3">
-                        <input th:type="text" name="SKU">
+                        <input th:type="text" name="sku">
                         <label>SKU</label>
                     </div>
                     <div class="input-field col s3">

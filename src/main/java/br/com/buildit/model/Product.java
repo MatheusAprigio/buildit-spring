@@ -16,7 +16,7 @@ public class Product {
     private Integer id;
 
     @Column(name = "nm_sku", nullable = false, unique = true)
-    private String SKU;
+    private String sku;
 
     @Column(name = "fl_product", nullable = true)
     private String picture;
@@ -49,12 +49,12 @@ public class Product {
         this.id = id;
     }
 
-    public String getSKU() {
-        return SKU;
+    public String getSku() {
+        return sku;
     }
 
-    public void setSKU(String SKU) {
-        this.SKU = SKU;
+    public void setSku(String SKU) {
+        this.sku = SKU;
     }
 
     public String getPicture() {
@@ -113,8 +113,8 @@ public class Product {
         this.orderProducts = orderProducts;
     }
 
-    public Product(String SKU, String picture, String name, String description, String measure, double unitPrice, Category category, List<OrderProduct> orderProducts) {
-        this.SKU = SKU;
+    public Product(String sku, String picture, String name, String description, String measure, double unitPrice, Category category, List<OrderProduct> orderProducts) {
+        this.sku = sku;
         this.picture = picture;
         this.name = name;
         this.description = description;
