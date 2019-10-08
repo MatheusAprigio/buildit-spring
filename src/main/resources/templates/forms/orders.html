@@ -20,24 +20,28 @@
                     <span th:text="${ 'Numero do pedido: ' + order.id + ' Cliente:' + order.customer.name + ' Data do Pedido:' + order.orderDate}"> </span>
                 </div>
                 <div class="collapsible-body">
-                    <div th:each="op : ${orderProduct}" th:remove="tag">
-                        <div class="collapsible-img-left" th:if="${op.order.id == order.id}">
-                            <div th:if="${op.product.picture != ''}" th:remove="tag">
-                                <img class="responsive-img" th:src="${op.product.picture}" width="60px"
-                                     height="60px">
+                    <div class="row">
+                        <div th:each="op : ${orderProduct}" th:remove="tag">
+                            <div class="col s12 m1 text-center " th:if="${op.order.id == order.id}">
+                                <div th:if="${op.product.picture != ''}" th:remove="tag">
+                                    <img class="responsive-img" th:src="${op.product.picture}" width="60px"
+                                         height="60px">
+                                </div>
+                                <div th:if="${op.product.picture == ''}" th:remove="tag">
+                                    <img class="responsive-img" src="/image/no-image.svg" width="60px" height="60px"
+                                         alt="Product IMG">
+                                </div>
                             </div>
-                            <div th:if="${op.product.picture == ''}" th:remove="tag">
-                                <img class="responsive-img" src="/image/no-image.svg" width="60px" height="60px"
-                                     alt="Product IMG">
+                            <div class="col s12 m11" th:if="${op.order.id == order.id}">
+                                <p th:text="${op.product.name + '  |  ' + op.product.measure + ' |  Preço Unitario: ' + op.product.unitPrice + '  |  Qtd:' + op.quantity} ">
                             </div>
-                        </div>
-                        <div class="collapsible-text" th:if="${op.order.id == order.id}">
-                            <p th:text="${op.product.name + '  |  ' + op.product.measure + ' |  Preço Unitario: ' + op.product.unitPrice + '  |  Qtd:' + op.quantity} ">
                         </div>
                     </div>
-                    <p th:text="${'Valor final: ' + order.orderValue}"></p>
-                    <p th:text="${'Endereço de entrega: ' + order.customer.address}"></p>
-                    <p th:text="${'Motorista: ' + order.driver.name}"></p>
+                    <div class="row">
+                        <p th:text="${'Valor final: ' + order.orderValue}"></p>
+                        <p th:text="${'Endereço de entrega: ' + order.customer.address}"></p>
+                        <p th:text="${'Motorista: ' + order.driver.name}"></p>
+                    </div>
                 </div>
             </li>
         </ul>
@@ -45,3 +49,4 @@
 </div>
 </body>
 </html>
+
