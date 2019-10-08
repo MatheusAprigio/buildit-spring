@@ -7,6 +7,11 @@ $('.button-collapse').sideNav({
 
 $(document).ready(function () {
     $('.modal').modal();
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.collapsible');
+        var instances = M.Collapsible.init(elems, options);
+    });
 });
 
 $(".btn-remove").click(function () {

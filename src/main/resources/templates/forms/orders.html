@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/general}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Build It - Dashboard</title>
+</head>
+<body>
+<div layout:fragment="content" th:remove="tag">
+    <div th:insert="fragments/dashboard"></div>
+    <div class="container content-dashboard">
+        <ul class="collapsible">
+            <li th:each="order : ${orders}">
+                <div class="collapsible-header">
+                    <span th:text="${ 'Numero do pedido: ' + order.id + ' Cliente:' + order.customer.name + ' Data do Pedido:' + order.orderDate}"> </span>
+                </div>
+                <div class="collapsible-body">
+                    <div th:each="op : ${orderProduct}" th:remove="tag">
+                        <div class="collapsible-img-left" th:if="${op.order.id == order.id}">
+                            <div th:if="${op.product.picture != ''}" th:remove="tag">
+                                <img class="responsive-img" th:src="${op.product.picture}" width="60px"
+                                     height="60px">
+                            </div>
+                            <div th:if="${op.product.picture == ''}" th:remove="tag">
+                                <img class="responsive-img" src="/image/no-image.svg" width="60px" height="60px"
+                                     alt="Product IMG">
+                            </div>
+                        </div>
+                        <div class="collapsible-text" th:if="${op.order.id == order.id}">
+                            <p th:text="${op.product.name + '  |  ' + op.product.measure + ' |  Preço Unitario: ' + op.product.unitPrice + '  |  Qtd:' + op.quantity} ">
+                        </div>
+                    </div>
+                    <p th:text="${'Valor final: ' + order.orderValue}"></p>
+                    <p th:text="${'Endereço de entrega: ' + order.customer.address}"></p>
+                    <p th:text="${'Motorista: ' + order.driver.name}"></p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

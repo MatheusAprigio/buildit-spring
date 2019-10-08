@@ -5,9 +5,9 @@ html, body {
 
 .truncate {
     white-space: nowrap;
-    text-overflow:ellipsis;
+    text-overflow: ellipsis;
     overflow: hidden;
-    max-width:250px;
+    max-width: 250px;
     padding-top: 20px;
 }
 
@@ -55,7 +55,7 @@ html, body {
 }
 
 /* SIDE NAV */
-.side-nav{
+.side-nav {
     width: 230px;
 }
 
@@ -105,13 +105,14 @@ html, body {
     width: 300px;
 }
 
-.modal-medium{
+.modal-medium {
     width: 700px;
 }
 
-.modal-small{
+.modal-small {
     width: 360px;
 }
+
 /* ALERTS */
 .alert {
     position: relative;
@@ -177,8 +178,27 @@ html, body {
     color: #491217;
 }
 
-.white-text{
+.white-text {
     color: #ffffff;
+}
+
+.collapsible-img-left {
+    float: left
+}
+.collapsible-body div{
+    padding-bottom: 20px;
+}
+
+.collapsible-img-left img {
+    margin-right: 10px;
+    display: block;
+}
+
+
+.collapsible-text p {
+    line-height: 20px;
+    height: 20px;
+    padding: 15px;
 }
 
 /* MEDIA QUERIES*/
@@ -196,11 +216,11 @@ html, body {
         width: 80px;
     }
 
-    .modal-medium{
+    .modal-medium {
         width: 360px;
     }
 
-    .modal-content  h5{
+    .modal-content h5 {
         padding-bottom: 15px;
     }
 }
@@ -260,26 +280,26 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
 
     .truncate {
         white-space: nowrap;
-        text-overflow:ellipsis;
+        text-overflow: ellipsis;
         overflow: hidden;
-        max-width:200px;
+        max-width: 200px;
         padding-top: 20px;
     }
 
 }
 
-@media  (min-height:  600px)
+@media (min-height: 600px)
 and (max-width: 1380px)
-and (orientation: landscape){
+and (orientation: landscape) {
     .content-dashboard {
         padding-left: 100px;
     }
 
     .truncate {
         white-space: nowrap;
-        text-overflow:ellipsis;
+        text-overflow: ellipsis;
         overflow: hidden;
-        max-width:200px;
+        max-width: 200px;
         padding-top: 20px;
     }
 }

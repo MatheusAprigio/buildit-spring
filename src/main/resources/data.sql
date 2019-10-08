@@ -19,5 +19,8 @@ INSERT  INTO TB_VEHICLE values (1, 'WHITE', 'Toyota Yaris Hatch', 'ABC-1234', 20
 INSERT  INTO TB_DRIVER values (1, 'AV JOAO MEDEIROS', {ts '1997-12-24 18:47:52.69'}, '44944008743', 'driver@gmail.com', 'Maria', 'driver', '(11)99456-1234', null, '531768758731', 1);
 
 INSERT INTO TB_ORDER values (1, {ts '2019-09-22 13:15:00.10'}, 25, 1, 1);
+INSERT INTO TB_ORDER values (2, {ts '2019-09-22 13:15:00.10'}, 30, 1, 1);
+
 INSERT INTO TB_ORDER_PRODUCT values (1, 2, 1, 1);
-INSERT INTO TB_ORDER_PRODUCT values (2, 1, 1, 2);
+INSERT INTO TB_ORDER_PRODUCT values (2, 1, 1, 3);
+INSERT INTO TB_ORDER_PRODUCT values (3, 1, 2, 1);
