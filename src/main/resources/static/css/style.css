@@ -182,24 +182,10 @@ html, body {
     color: #ffffff;
 }
 
-.collapsible-img-left {
-    float: left
-}
-.collapsible-body div{
-    padding-bottom: 20px;
+.text-center {
+   text-align: center;
 }
 
-.collapsible-img-left img {
-    margin-right: 10px;
-    display: block;
-}
-
-
-.collapsible-text p {
-    line-height: 20px;
-    height: 20px;
-    padding: 15px;
-}
 
 /* MEDIA QUERIES*/
 @media (min-width: 320px) and (max-width: 480px) {
