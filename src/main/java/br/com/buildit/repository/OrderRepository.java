@@ -8,9 +8,13 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface OrderRepository extends JpaRepository <Order, Integer> {
+public interface OrderRepository extends JpaRepository<Order, Integer> {
 
     List<Order> findDistinctByCustomer_Email(String email);
 
     List<Order> findByStatus(Status status);
+
+    List<Order> findByCustomer_NameIsContainingIgnoreCaseOrCustomer_EmailIsContainingIgnoreCaseOrDriver_NameIsContainingIgnoreCaseOrDriver_EmailIsContainingIgnoreCase(String customerName, String customerEmail, String driverName, String driverEmail);
+
+    List<Order> findByStatusAndCustomer_NameIsContainingIgnoreCaseOrCustomer_EmailIsContainingIgnoreCaseOrDriver_NameIsContainingIgnoreCaseOrDriver_EmailIsContainingIgnoreCase(Status status, String customerName, String customerEmail, String driverName, String driverEmail);
 }

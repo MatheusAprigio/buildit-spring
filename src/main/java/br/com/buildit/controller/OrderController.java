@@ -4,6 +4,7 @@ import br.com.buildit.model.Status;
 import br.com.buildit.repository.OrderProductRepository;
 import br.com.buildit.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +22,7 @@ public class OrderController {
     OrderProductRepository orderProductRepository;
 
     @GetMapping("list")
-    public String listAllOrders(Model model){
+    public String listAllOrders(Model model) {
 
         model.addAttribute("orders", orderRepository.findAll());
         model.addAttribute("orderProduct", orderProductRepository.findAll());
@@ -29,12 +30,19 @@ public class OrderController {
     }
 
     @GetMapping("list/status")
-    public String listByStatus(@RequestParam String status, Model model){
+    public String lisrOrdersFilter(@RequestParam String status, @RequestParam String filter, Model model) {
 
-        if (status.equals("NENHUM")) {
-            model.addAttribute("orders", orderRepository.findAll());
-        } else {
+        if (status.equals("NENHUM") && !filter.isEmpty()) {
+            model.addAttribute("orders",
+                    orderRepository.findByCustomer_NameIsContainingIgnoreCaseOrCustomer_EmailIsContainingIgnoreCaseOrDriver_NameIsContainingIgnoreCaseOrDriver_EmailIsContainingIgnoreCase(filter, filter, filter, filter));
+
+        } else if (!status.equals("NENHUM") && !filter.isEmpty()) {
+            model.addAttribute("orders",
+                    orderRepository.findByStatusAndCustomer_NameIsContainingIgnoreCaseOrCustomer_EmailIsContainingIgnoreCaseOrDriver_NameIsContainingIgnoreCaseOrDriver_EmailIsContainingIgnoreCase(Status.valueOf(status), filter, filter, filter, filter));
+        } else if (!status.equals("NENHUM") && filter.isEmpty()) {
             model.addAttribute("orders", orderRepository.findByStatus(Status.valueOf(status)));
+        } else {
+            model.addAttribute("orders", orderRepository.findAll());
         }
 
         model.addAttribute("orderProduct", orderProductRepository.findAll());
