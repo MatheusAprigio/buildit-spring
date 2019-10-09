@@ -28,6 +28,16 @@ public class ProductsController {
         return "forms/products";
     }
 
+    @GetMapping("list/filter")
+    public String listProductsFilter(Model model, String filter){
+
+        model.addAttribute("categories", categoryRepository.findAll());
+        model.addAttribute("products", productRepository.
+                findBySkuIsContainingIgnoreCaseOrNameIsContainingIgnoreCaseOrCategory_NameIsContainingIgnoreCaseOrDescriptionIsContainingIgnoreCaseOrMeasureIsContainingIgnoreCase(
+                filter, filter, filter, filter, filter));
+            return "forms/products";
+    }
+
     @PostMapping("delete")
     public String deleteProduct(Integer id, RedirectAttributes redirectAttributes) {
 
