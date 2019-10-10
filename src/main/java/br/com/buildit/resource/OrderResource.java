@@ -30,11 +30,4 @@ public class OrderResource {
     Order saveOrder(@RequestBody Order order) {
         return orderRepository.save(order);
     }
-
-    @ApiOperation(value = "Deleta um pedido já existente")
-    @DeleteMapping("{id}")
-    @ResponseStatus(code = HttpStatus.OK)
-    void deleteProductById(@PathVariable Integer id) {
-        orderRepository.deleteById(id);
-    }
 }

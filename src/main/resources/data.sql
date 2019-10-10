@@ -7,9 +7,8 @@ INSERT INTO TB_PRODUCT values(2, 'Just an example of a product description', '1 
 INSERT INTO TB_PRODUCT values(3, 'Just an example of a product description', '30 x 30', 'Tijolo', 'https://appsisecommerces3.s3.amazonaws.com/clientes/cliente11837/produtos/7274/Z8569.jpg', 'BD0003', 3.00, 2);
 
 INSERT INTO TB_EMPLOYEE values (1, 'buildit@fiap.com.br','Matheus','nimda','ROLE_ADMIN');
-INSERT INTO TB_EMPLOYEE values (4, 'thiago@fiap.com.br','Thiago','nimda','ROLE_ADMIN');
-INSERT INTO TB_EMPLOYEE values (3, 'matheus@fiap.com.br','Thiago','nimda','ROLE_USER');
-INSERT INTO TB_EMPLOYEE values (2, 'user@fiap.com.br','Ana Julia','nimda','ROLE_USER');
+INSERT INTO TB_EMPLOYEE values (4, 'admin@fiap.com.br','Thiago','nimda','ROLE_ADMIN');
+INSERT INTO TB_EMPLOYEE values (2, 'user@fiap.com.br','Ana Julia','user','ROLE_USER');
 
 
 INSERT  INTO TB_CUSTOMER values (1, 'AV JUNDIAI, 69 - Apto 190', {ts '1997-12-24 18:47:52.69'}, '42933007643', 'customer@gmail.com', 'Augusta','customer', '(11)99113-3700', null);

@@ -20,8 +20,7 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
 
     List<Order> findByStatusAndCustomer_NameIsContainingIgnoreCaseOrCustomer_EmailIsContainingIgnoreCaseOrDriver_NameIsContainingIgnoreCaseOrDriver_EmailIsContainingIgnoreCase(Status status, String customerName, String customerEmail, String driverName, String driverEmail);
 
-    @Query("Update Order o set o.status  = 'CANCELADO' where o.id = ?1")
-    @Modifying
-    Order updateOrderStatus(Integer id);
+    @Query("select sum(o.orderValue) from Order o")
+    String sumOrdersTotal();
 
 }

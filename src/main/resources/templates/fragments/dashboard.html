@@ -39,7 +39,9 @@
                         </ul>
                     </li>
                 </div>
-                <li><a href="/"><i class="material-icons">pie_chart</i>Visão Geral</a></li>
+                <div th:if="${employee.role == T(br.com.buildit.model.Role).ROLE_ADMIN}">
+                    <li><a href="/overview"><i class="material-icons">pie_chart</i>Visão Geral</a></li>
+                </div>
                 <li><a href="/"><i class="material-icons">adjust</i>Configurações</a></li>
             </ul>
         </div>
