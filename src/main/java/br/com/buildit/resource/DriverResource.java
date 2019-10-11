@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityNotFoundException;
+
 @Api(description = "Operações para manipulação/visualização de motoristas")
 @RestController
 @RequestMapping("api/v1/drivers")
@@ -16,6 +18,12 @@ public class DriverResource {
 
     @Autowired
     private DriverRepository driverRepository;
+
+    @ApiOperation(value = "Retorna os dados de um motorista")
+    @GetMapping("{id}")
+    Driver getCustomer(@PathVariable Integer id) {
+        return driverRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(String.valueOf(id)));
+    }
 
     @ApiOperation(value = "Cria um motorista")
     @PostMapping
