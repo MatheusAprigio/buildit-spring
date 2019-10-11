@@ -6,6 +6,7 @@ import br.com.buildit.repository.CustomerRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @Api(description = "Operações para manipulação/visualização de usuários (Clientes finais - APP)")
@@ -16,9 +17,24 @@ public class CustomerResource {
     @Autowired
     CustomerRepository customerRepository;
 
-    @ApiOperation(value = "Retorna um único usuário (Cliente final) a partir de um usuário e senha")
+    @ApiOperation(value = "Cria um usuário (Cliente final)")
     @PostMapping
-    Customer getCustomerByEmailAndPassword(@RequestParam String email, @RequestParam String password) {
-        return customerRepository.findByEmailAndPassword(email, password);
+    @ResponseStatus(HttpStatus.CREATED)
+    Customer createCustomer(@RequestBody Customer customer) {
+        return customerRepository.save(customer);
+    }
+
+    @ApiOperation(value = "Atualiza os dados de um usuário (Cliente final)")
+    @PutMapping("{id}")
+    @ResponseStatus(HttpStatus.OK)
+    Customer updateCustomer(@PathVariable int id, Customer customer) {
+        customer.setId(id);
+        return customerRepository.save(customer);
+    }
+
+    @ApiOperation(value = "Deleta um usuário (Cliente final)")
+    @DeleteMapping("{id}")
+    public void deleteCustomer(@PathVariable int id){
+        customerRepository.deleteById(id);
     }
 }
