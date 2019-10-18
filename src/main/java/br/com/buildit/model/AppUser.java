@@ -11,7 +11,6 @@ public class AppUser {
 
     @Id
     @GeneratedValue(generator = "appuser", strategy = GenerationType.SEQUENCE)
-    @JsonIgnore
     private Integer id;
 
     @Column(name = "nm_user", nullable = false)

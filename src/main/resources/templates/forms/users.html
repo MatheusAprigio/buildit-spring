@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/general}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Build It - Dashboard</title>
+</head>
+<body>
+<div layout:fragment="content" th:remove="tag">
+    <div th:insert="fragments/dashboard"></div>
+    <div class="container content-dashboard">
+        <div class="alert alert-success" th:if="${msg != null}" th:text="${msg}"></div>
+        <div class="row">
+            <div class="col s6">
+                <a class="waves-effect waves-light btn green darken-1 modal-trigger" href="#add-modal">
+                    <i class="material-icons left">add_box</i>Adicionar
+                </a>
+            </div>
+            <div class="col s6">
+                <!-- Barra de pesquisa aqui -->
+            </div>
+        </div>
+        <table id="table-users">
+            <thead>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th></th>
+            <th></th>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.email}"></td>
+                <td>
+                    <a class="waves-effect waves-light btn red darken-1 modal-trigger btn-remove" href="#remove-modal">
+                        <i class="material-icons left">delete_forever</i>Deletar
+                    </a>
+                    <input type="hidden" id="id" th:value="${user.id}">
+                </td>
+                <td><a class="waves-effect waves-light btn blue darken-2 modal-trigger edit-user" href="#edit-modal"><i
+                        class="material-icons left">edit</i>Atualizar</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="remove-modal" class="modal modal-remove">
+        <div class="modal-content">
+            <p>Você tem certeza que deseja deletar este item?</p>
+        </div>
+        <div class="modal-footer">
+            <form method="post" th:action="@{/employee/users/delete}">
+                <input th:type="hidden" id="delete-id" name="id">
+                <button type="submit" class="waves-effect btn-flat btn-delete">Sim</button>
+                <button type="button" class="modal-close waves-effect btn-flat">Não</button>
+            </form>
+        </div>
+    </div>
+    <div id="edit-modal" class="modal modal-small">
+        <div class="modal-content center-align">
+            <h5>Atualizar usuário <i class="material-icons">person</i></h5>
+            <form method="post" th:action="@{/employee/users/edit}">
+                <input th:type="hidden" id="edit-id" name="id">
+                <input th:type="hidden" name="role" th:value="ROLE_USER">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input th:type="text" id="name" name="name" value="&nbsp;">
+                        <label for="name">Nome</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input th:type="text" id="email" name="email" value="&nbsp;">
+                        <label for="email">E-mail</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input th:type="password" id="password" name="password">
+                        <label for="password">Senha</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s6">
+                        <button th:type="button" class="modal-close waves-effect btn-flat red darken-1 white-text">
+                            Cancelar
+                        </button>
+                    </div>
+                    <div class="col s6">
+                        <button th:type="submit" class="waves-effect btn-flat blue darken-2 white-text">Salvar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="add-modal" class="modal modal-small">
+        <div class="modal-content center-align">
+            <h5>Adicionar usuário <i class="material-icons">person</i></h5>
+            <form method="post" th:action="@{/employee/users/add}">
+                <input th:type="hidden" name="role" th:value="ROLE_USER">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input th:type="text" name="name" value="&nbsp;">
+                        <label for="name">Nome</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input th:type="text" name="email" value="&nbsp;">
+                        <label for="email">E-mail</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input th:type="password" name="password">
+                        <label for="password">Senha</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s6">
+                        <button th:type="button" class="modal-close waves-effect btn-flat red darken-1 white-text">
+                            Cancelar
+                        </button>
+                    </div>
+                    <div class="col s6">
+                        <button th:type="submit" class="waves-effect btn-flat blue darken-2 white-text">Adicionar
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

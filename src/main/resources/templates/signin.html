@@ -1,43 +1,47 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/general}">
 <head>
-    <div th:replace="fragments/general :: head(pageTitle='Build It - Login')"></div>
+    <title>Build It - Login</title>
 </head>
 <body>
-<div class="login-page">
-    <div class="login-card">
-        <div class="card horizontal large">
-            <div class="card-image">
-                <img src="image/tools-background.jpg">
-            </div>
-            <div class="card-stacked">
-                <div class="card-content">
-                    <form method="post" action="/signin">
-                        <h4>Dashboard - Login</h4>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input id="email" type="email" name="email" class="validate">
-                                <label for="email">E-mail:</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input id="password" type="password" name="password" class="validate">
-                                <label for="password">Senha:</label>
-                            </div>
-                        </div>
-                        <button class="btn waves-effect waves-light btn-login" type="submit" name="action">Entrar
-                        </button>
-                    </form>
+<div layout:fragment="content" th:remove="tag">
+    <div class="login-page">
+        <div class="login-card">
+            <div class="card horizontal large">
+                <div class="card-image">
+                    <img src="image/tools-background.jpg">
                 </div>
-                <div class="card-action center-align">
-                    <span>© 2019 - Build It</span>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <form method="post" action="/signin">
+                            <h4>Dashboard - Login</h4>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="email" type="email" name="email" class="validate">
+                                    <label for="email">E-mail:</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="password" type="password" name="password" class="validate">
+                                    <label for="password">Senha:</label>
+                                </div>
+                            </div>
+                            <button class="btn waves-effect waves-light btn-login" type="submit" name="action">Entrar
+                            </button>
+                        </form>
+                    </div>
+                    <div class="card-action center-align">
+                        <span>© 2019 - Build It</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div th:replace="fragments/general :: scripts"></div>
 </body>
 </html>
 

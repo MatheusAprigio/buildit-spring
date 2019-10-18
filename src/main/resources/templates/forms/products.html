@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/general}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Build It - Dashboard</title>
+</head>
+<body>
+<div layout:fragment="content" th:remove="tag">
+    <div th:insert="fragments/dashboard"></div>
+    <div class="container content-dashboard">
+        <div class="alert alert-success" th:if="${msg != null}" th:text="${msg}"></div>
+        <div class="row">
+            <div class="col s6">
+                <a class="waves-effect waves-light btn green darken-1 modal-trigger" href="#add-modal">
+                    <i class="material-icons left">add_box</i>Adicionar
+                </a>
+            </div>
+            <div class="col s6">
+                <div class="input-field">
+                    <form method="get" th:action="@{/products/list/filter}">
+                        <input th:type="text" name="filter">
+                        <label>Pesquisar</label>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <table id="table-products">
+            <thead>
+            <th>Imagem</th>
+            <th>SKU</th>
+            <th>Nome do produto</th>
+            <th>Descrição</th>
+            <th>Categoria</th>
+            <th>Uni. Medida</th>
+            <th>Valor unitário</th>
+            <th></th>
+            <th></th>
+            </thead>
+            <tbody>
+            <tr th:each="product : ${products}">
+                <td th:if="${product.picture != ''}" th:value="${product.picture}"><img class="responsive-img"
+                                                                                        th:src="${product.picture}"
+                                                                                        width="60px" height="60px"></td>
+                <td th:if="${product.picture == ''}"><img class="responsive-img" src="/image/no-image.svg" width="60px"
+                                                          height="60px" alt="Product IMG"></td>
+                <td th:text="${product.sku}"></td>
+                <td th:text="${product.name}"></td>
+                <td class="truncate" th:text="${product.description}"></td>
+                <td th:text="${product.category.name}"></td>
+                <td th:text="${product.measure}"></td>
+                <td th:text="${product.unitPrice}"></td>
+                <td>
+                    <a class="waves-effect waves-light btn red darken-1 modal-trigger btn-remove" href="#remove-modal">
+                        <i class="material-icons left">delete_forever</i>Deletar
+                    </a>
+                    <input type="hidden" th:value="${product.id}">
+                </td>
+                <td>
+                    <a class="waves-effect waves-light btn blue darken-2 modal-trigger btn-edit edit-product"
+                       href="#edit-modal">
+                        <i class="material-icons left">edit</i>Atualizar
+                    </a>
+                    <input type="hidden" th:value="${product.id}">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="remove-modal" class="modal modal-remove">
+        <div class="modal-content">
+            <p>Você tem certeza que deseja deletar este item?</p>
+        </div>
+        <div class="modal-footer">
+            <form method="post" th:action="@{/products/delete}">
+                <input th:type="hidden" id="delete-id" name="id">
+                <button th:type="submit" class="waves-effect btn-flat">Sim</button>
+                <button th:type="button" class="modal-close waves-effect btn-flat">Não</button>
+            </form>
+        </div>
+    </div>
+    <div id="edit-modal" class="modal modal-medium">
+        <div class="modal-content center-align">
+            <h5>Atualizar Produto <i class="material-icons">shopping_basket</i></h5>
+            <form method="post" th:action="@{/products/edit}">
+                <input th:type="hidden" id="edit-id" name="id">
+                <div class="row">
+                    <div class="col s4">
+                        <img class="responsive-img" id="img-product" src="/image/no-image.svg">
+                    </div>
+                    <div class="col s8">
+                        <div class="input-field">
+                            <input th:type="text" name="picture" id="picture" value="&nbsp;">
+                            <label>URL da imagem:</label>
+                        </div>
+                        <div class="input-field">
+                            <input th:type="text" name="name" id="name" value="&nbsp;">
+                            <label for="name">Nome:</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s3">
+                        <input th:type="text" name="sku" id="sku" value="&nbsp;">
+                        <label>SKU</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input th:type="text" id="measure" name="measure" value="&nbsp;">
+                        <label>Medida</label>
+                    </div>
+                    <div class="col s3">
+                        <label>Categoria</label>
+                        <select class="browser-default" name="category">
+                            <option th:each="category : ${categories}"
+                                    th:value="${category.id}" th:text="${category.name}"></option>
+                        </select>
+
+                    </div>
+                    <div class="input-field col s3">
+                        <input th:type="text" name="unitPrice" id="unitPrice" value="&nbsp;">
+                        <label>Valor Un.</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea class="materialize-textarea" id="description" name="description"></textarea>
+                        <label>Descrição</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s6">
+                        <button th:type="button" class="modal-close waves-effect btn-flat red darken-1 white-text">
+                            Cancelar
+                        </button>
+                    </div>
+                    <div class="col s6">
+                        <button th:type="submit" class="waves-effect btn-flat blue darken-2 white-text">Salvar
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="add-modal" class="modal modal-medium">
+        <div class="modal-content center-align">
+            <h5>Adicionar Produto <i class="material-icons">shopping_basket</i></h5>
+            <form method="post" th:action="@{/products/add}">
+                <div class="row">
+                    <div class="col s4">
+                        <img class="responsive-img" src="/image/no-image.svg">
+                    </div>
+                    <div class="col s8">
+                        <div class="input-field">
+                            <input th:type="text" name="picture">
+                            <label>URL da imagem:</label>
+                        </div>
+                        <div class="input-field">
+                            <input th:type="text" name="name">
+                            <label for="name">Nome:</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s3">
+                        <input th:type="text" name="sku">
+                        <label>SKU</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input th:type="text" name="measure">
+                        <label>Medida</label>
+                    </div>
+                    <div class="col s3">
+                        <label>Categoria</label>
+                        <select class="browser-default" name="category">
+                            <option th:each="category : ${categories}"
+                                    th:value="${category.id}" th:text="${category.name}"></option>
+                        </select>
+
+                    </div>
+                    <div class="input-field col s3">
+                        <input th:type="text" name="unitPrice">
+                        <label>Valor Un.</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea class="materialize-textarea" name="description"></textarea>
+                        <label>Descriçao</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s6">
+                        <button th:type="button" class="modal-close waves-effect btn-flat red darken-1 white-text">
+                            Cancelar
+                        </button>
+                    </div>
+                    <div class="col s6">
+                        <button th:type="submit" class="waves-effect btn-flat blue darken-2 white-text">Adicionar
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

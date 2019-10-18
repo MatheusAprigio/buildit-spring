@@ -20,31 +20,20 @@ public class ProductResource {
 
     @ApiOperation(value = "Retorna uma lista com todos os produtos")
     @GetMapping
-    public List<Product> getAllProducts(){
+    List<Product> getAllProducts(){
         return productRepository.findAll();
-    }
-
-    @ApiOperation(value = "Retorna uma lista com todos os produtos de uma empresa")
-    @GetMapping("companies")
-    public List<Product> getProductsByCompany(@RequestParam String name){
-        return productRepository.findByCompany(name);
     }
 
     @ApiOperation(value = "Retorna uma lista com todos os produtos por nome de produto, sendo o nome incompleto ou completo (LIKE do SQL)")
     @GetMapping("filter")
-    public List<Product> getProductsByName(@RequestParam String name){
+    List<Product> getProductsByName(@RequestParam String name){
         return productRepository.findByNameContainingIgnoreCase(name);
     }
 
     @ApiOperation(value = "Retorna uma lista com todos os produtos a partir do nome de uma categoria")
     @GetMapping("categories")
     List<Product> getProductsByCategory(@RequestParam String name){
-        return productRepository.findByCategoryName(name);
+        return productRepository.findByCategory_Name(name);
     }
 
-    @ApiOperation(value = "Retorna uma lista com todos os produtos a partir do nome de uma categoria e de uma empresa")
-    @GetMapping("companies-categories")
-    List<Product> getProductsByCategoryAndCompany(@RequestParam String categoryName, @RequestParam String companyName){
-        return productRepository.findByCategoryNameAndCompany(categoryName, companyName);
-    }
 }

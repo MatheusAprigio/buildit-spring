@@ -7,16 +7,16 @@ import java.util.List;
 
 @Entity
 @Table(name = "TB_PRODUCT")
-@SequenceGenerator(name = "product", allocationSize = 1, sequenceName = "SQ_PRODUCT")
+@SequenceGenerator(name = "product", allocationSize = 1, sequenceName = "SQ_PRODUCT" , initialValue = 4)
 public class Product {
 
     @Id
     @GeneratedValue(generator = "product", strategy = GenerationType.SEQUENCE)
     @Column(name = "cd_product")
-    private String id;
+    private Integer id;
 
-    @Column(name = "nm_sku", nullable = false)
-    private String SKU;
+    @Column(name = "nm_sku", nullable = false, unique = true)
+    private String sku;
 
     @Column(name = "fl_product", nullable = true)
     private String picture;
@@ -27,38 +27,34 @@ public class Product {
     @Column(name = "ds_product", nullable = false)
     private String description;
 
-    @Column(name = "ds_measure", nullable = true)
+    @Column(name = "ds_measure", nullable = false)
     private String measure;
 
     @Column(name = "vl_product", nullable = false)
     private double unitPrice;
 
     @ManyToOne
-    @JoinColumn(name = "cd_company")
-    private Company productCompany;
-
-    @ManyToOne
     @JoinColumn(name = "cd_category")
     private Category category;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     @JsonIgnore
     List<OrderProduct> orderProducts;
-
-    public String getId() {
+    
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getSKU() {
-        return SKU;
+    public String getSku() {
+        return sku;
     }
 
-    public void setSKU(String SKU) {
-        this.SKU = SKU;
+    public void setSku(String SKU) {
+        this.sku = SKU;
     }
 
     public String getPicture() {
@@ -101,14 +97,6 @@ public class Product {
         this.unitPrice = unitPrice;
     }
 
-    public Company getProductCompany() {
-        return productCompany;
-    }
-
-    public void setProductCompany(Company productCompany) {
-        this.productCompany = productCompany;
-    }
-
     public Category getCategory() {
         return category;
     }
@@ -125,14 +113,13 @@ public class Product {
         this.orderProducts = orderProducts;
     }
 
-    public Product(String SKU, String picture, String name, String description, String measure, double unitPrice, Company productCompany, Category category, List<OrderProduct> orderProducts) {
-        this.SKU = SKU;
+    public Product(String sku, String picture, String name, String description, String measure, double unitPrice, Category category, List<OrderProduct> orderProducts) {
+        this.sku = sku;
         this.picture = picture;
         this.name = name;
         this.description = description;
         this.measure = measure;
         this.unitPrice = unitPrice;
-        this.productCompany = productCompany;
         this.category = category;
         this.orderProducts = orderProducts;
     }

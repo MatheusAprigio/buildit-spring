@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/general}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Build It - Dashboard</title>
+</head>
+<body>
+<div layout:fragment="content" th:remove="tag">
+    <div th:insert="fragments/dashboard"></div>
+    <div class="container">
+
+        <p th:text="${'Total de pedidos ' + orders.size()}"></p>
+        <p th:text="${'Faturamento (Tudo) ' + sumOrders}"></p>
+        <p th:text="${'Total de admins ' + admin}"></p>
+        <p th:text="${'Total de usuários (Caixa ) ' + user}"></p>
+        <p th:text="${'Produtos cadastrados ' + sumProducts}"></p>
+
+    </div>
+</div>
+</body>
+</html>

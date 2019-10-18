@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/general}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Build It - Dashboard</title>
+</head>
+<body>
+<div layout:fragment="content" th:remove="tag">
+    <div th:insert="fragments/dashboard"></div>
+    <div class="container content-dashboard">
+        <div class="alert alert-success" th:if="${msg != null}" th:text="${msg}"></div>
+        <div class="row">
+            <div class="col s8">
+                <form action="/order/list/status" method="get">
+                    <div class="col s2">
+                        <label>Filtrar </label>
+                        <select class="browser-default" name="status">
+                            <option value="NENHUM">NENHUM</option>
+                            <option th:each="status : ${T(br.com.buildit.model.Status).values()}" th:value="${status}"
+                                    th:text="${status}"></option>
+                        </select>
+                    </div>
+                    <div class="input-field col s5">
+                        <input id="filter" name="filter" type="text">
+                        <label for="filter">Texto para busca ...</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <button type="submit" class="waves-effect waves-light btn blue darken-2 "><i
+                                class="material-icons">search</i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <ul class="collapsible">
+            <li th:each="order : ${orders}">
+                <div class="collapsible-header">
+                    <span th:text="${ 'Numero do pedido: ' + order.id + ' Cliente:' + order.customer.name + ' Data do Pedido:' + order.orderDate}"> </span>
+                </div>
+                <div class="collapsible-body">
+                    <div class="row">
+                        <div th:each="op : ${orderProduct}" th:remove="tag">
+                            <div class="col s12 m1 text-center " th:if="${op.order.id == order.id}">
+                                <div th:if="${op.product.picture != ''}" th:remove="tag">
+                                    <img class="responsive-img" th:src="${op.product.picture}" width="60px"
+                                         height="60px">
+                                </div>
+                                <div th:if="${op.product.picture == ''}" th:remove="tag">
+                                    <img class="responsive-img" src="/image/no-image.svg" width="60px" height="60px"
+                                         alt="Product IMG">
+                                </div>
+                            </div>
+                            <div class="col s12 m11" th:if="${op.order.id == order.id}">
+                                <p th:text="${op.product.name + '  |  ' + op.product.measure + ' |  Preço Unitario: ' + op.product.unitPrice + '  |  Qtd:' + op.quantity} ">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p th:text="${'Valor final: ' + order.orderValue}"></p>
+                        <p th:text="${'Endereço de entrega: ' + order.customer.address}"></p>
+                        <p th:text="${'Motorista: ' + order.driver.name}"></p>
+                        <p th:text="${'Status: ' + order.status}"></p>
+                        <div th:if="${order.status ==  T(br.com.buildit.model.Status).PREPARANDO}">
+                            <a class="waves-effect waves-light btn red darken-1 modal-trigger btn-remove" href="#remove-modal">
+                               Cancelar
+                            </a>
+                            <input type="hidden" th:value="${order.id}">
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div id="remove-modal" class="modal modal-remove">
+        <div class="modal-content">
+            <p>Você tem certeza que deseja cancelar este item?</p>
+        </div>
+        <div class="modal-footer">
+            <form method="post" th:action="@{/order/cancel}">
+                <input th:type="hidden" id="delete-id" name="id">
+                <button th:type="submit" class="waves-effect btn-flat">Sim</button>
+                <button th:type="button" class="modal-close waves-effect btn-flat">Não</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

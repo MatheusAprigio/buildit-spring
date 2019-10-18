@@ -1,32 +1,50 @@
-<!doctype html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <div th:replace="fragments/general :: head(pageTitle='Build It - Dashboard')"></div>
-</head>
-<body>
-
-<div class="navbar-fixed">
-    <nav class="navbar navbar-buildit">
-        <div class="nav-wrapper">
-            <a data-activates="slide-out" class="button-collapse hide-on-large-only"><i
-                    class="material-icons">menu</i> </a>
-            <ul class="right">
-                <li><a title="Recarregar página"><i class="material-icons">refresh</i></a></li>
-                <li><a title="Sair" href="/logout"><i class="material-icons">exit_to_app</i></a></li>
+<div th:fragment="sidenav" th:remove="tag">
+    <div class="navbar-fixed">
+        <nav class="navbar navbar-buildit">
+            <div class="nav-wrapper">
+                <a data-activates="slide-out" class="button-collapse hide-on-large-only"><i
+                        class="material-icons">menu</i> </a>
+                <ul class="right">
+                    <li><a title="Recarregar página" onclick="location.reload()"><i
+                            class="material-icons">refresh</i></a>
+                    </li>
+                    <li><a title="Sair" href="/logout"><i class="material-icons">exit_to_app</i></a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div id="container">
+        <div id="menu">
+            <ul id="slide-out" class="side-nav fixed show-on-large-only side-buildit">
+                <li><img class="brand-logo" th:src="@{/image/logo-buildIT.jpg}" alt="Logo Build It"></li>
+                <li><span th:text="${'Olá, ' + employee.name}"></span></li>
+                <li><a href="/order/list"><i class="material-icons">local_grocery_store</i>Pedidos</a></li>
+                <div th:if="${employee.role == T(br.com.buildit.model.Role).ROLE_ADMIN}">
+                    <li><a href="/products/list"><i class="material-icons">label</i>Produtos</a></li>
+                </div>
+                <div th:if="${employee.role == T(br.com.buildit.model.Role).ROLE_ADMIN}">
+                    <li>
+                        <ul class="collapsible collapsible-accordion">
+                            <li>
+                                <a class="collapsible-header custom-collapsible-header"><i
+                                        class="material-icons">account_circle</i>Usuários<i
+                                        class="material-icons right">arrow_drop_down</i></a>
+                                <div class="collapsible-body">
+                                    <ul>
+                                        <li><a href="/employee/admins/list">Administradores</a></li>
+                                        <li><a href="/employee/users/list">Usuários (Caixa)</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </div>
+                <div th:if="${employee.role == T(br.com.buildit.model.Role).ROLE_ADMIN}">
+                    <li><a href="/overview"><i class="material-icons">pie_chart</i>Visão Geral</a></li>
+                </div>
+                <li><a href="/"><i class="material-icons">adjust</i>Configurações</a></li>
             </ul>
         </div>
-    </nav>
-</div>
-<div id="container">
-    <div id="menu">
-        <ul id="slide-out" class="side-nav fixed show-on-large-only side-buildit">
-            <li><img class="brand-logo" src="image/logo-buildIT.jpg" alt="Logo Build It"></li>
-            <li><span th:text="${'Olá, ' + name}"></span></li>
-            <li><a>Produtos</a></li>
-        </ul>
     </div>
 </div>
-<div th:replace="fragments/general :: scripts"></div>
-</body>
-</html>
 

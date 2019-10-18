@@ -1,11 +1,15 @@
 package br.com.buildit.resource;
 
+import br.com.buildit.model.Customer;
 import br.com.buildit.model.Driver;
 import br.com.buildit.repository.DriverRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import javax.persistence.EntityNotFoundException;
 
 @Api(description = "Operações para manipulação/visualização de motoristas")
 @RestController
@@ -15,9 +19,30 @@ public class DriverResource {
     @Autowired
     private DriverRepository driverRepository;
 
-    @ApiOperation(value = "Retorna um único motorista a partir de um email e uma senha")
+    @ApiOperation(value = "Retorna os dados de um motorista")
+    @GetMapping("{id}")
+    Driver getCustomer(@PathVariable Integer id) {
+        return driverRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(String.valueOf(id)));
+    }
+
+    @ApiOperation(value = "Cria um motorista")
     @PostMapping
-    public Driver getDriverByNameAndEmail(@RequestParam String email, @RequestParam String password){
-        return driverRepository.findByEmailAndPassword(email, password);
+    @ResponseStatus(HttpStatus.CREATED)
+    Driver createDriver(@RequestBody Driver driver) {
+        return driverRepository.save(driver);
+    }
+
+    @ApiOperation(value = "Atualiza os dados de um motorista")
+    @PutMapping("{id}")
+    @ResponseStatus(HttpStatus.OK)
+    Driver updateDriver(@PathVariable int id, Driver driver) {
+        driver.setId(id);
+        return driverRepository.save(driver);
+    }
+
+    @ApiOperation(value = "Deleta um motorista")
+    @DeleteMapping("{id}")
+    public void deleteDriver(@PathVariable int id){
+        driverRepository.deleteById(id);
     }
 }

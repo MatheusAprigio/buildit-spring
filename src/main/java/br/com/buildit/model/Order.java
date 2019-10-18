@@ -1,6 +1,5 @@
 package br.com.buildit.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -24,6 +23,10 @@ public class Order {
     @Column(name = "dt_order", nullable = false)
     private Date orderDate;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "ds_status", nullable = false)
+    Status status;
+
     @OneToOne
     @JoinColumn(name = "cd_customer")
     private Customer customer;
@@ -33,7 +36,7 @@ public class Order {
     private Driver driver;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "order")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, mappedBy = "order")
     List<OrderProduct> orderProducts;
 
     public Integer getId() {
@@ -84,12 +87,21 @@ public class Order {
         this.orderProducts = orderProducts;
     }
 
-    public Order(double orderValue, Date orderDate, Customer customer, Driver driver, List<OrderProduct> orderProducts) {
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public Order(double orderValue, Date orderDate, Customer customer, Driver driver, List<OrderProduct> orderProducts, Status status) {
         this.orderValue = orderValue;
         this.orderDate = orderDate;
         this.customer = customer;
         this.driver = driver;
         this.orderProducts = orderProducts;
+        this.status = status;
     }
 
     public Order() {}
