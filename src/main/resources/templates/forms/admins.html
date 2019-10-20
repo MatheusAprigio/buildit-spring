@@ -21,9 +21,17 @@
                     <i class="material-icons left">add_box</i>Adicionar
                 </a>
             </div>
-            <div class="col s6">
-                <!-- Barra de pesquisa aqui -->
-            </div>
+            <form action="/employee/admins/filter" method="get">
+                <div class="input-field col s3">
+                    <input id="filter" name="filter" type="text">
+                    <label for="filter">Texto para busca ...</label>
+                </div>
+                <div class="input-field col s3">
+                    <button type="submit" class="waves-effect waves-light btn blue darken-2 "><i
+                            class="material-icons">search</i>
+                    </button>
+                </div>
+            </form>
         </div>
         <table id="table-admins">
             <thead>
@@ -33,7 +41,7 @@
             <th></th>
             </thead>
             <tbody>
-            <tr th:each="admin : ${admins}">
+            <tr th:each="admin : ${admins}" th:if="${employee.email != admin.email}">
                 <td th:text="${admin.name}"></td>
                 <td th:text="${admin.email}"></td>
                 <td>

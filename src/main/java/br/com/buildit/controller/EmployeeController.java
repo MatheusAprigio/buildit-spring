@@ -46,7 +46,7 @@ public class EmployeeController {
         redirectAttributes.addFlashAttribute("msg", "Administrador alterado com sucesso!");
         return "redirect:list";
     }
-
+    
     @GetMapping("users/list")
     public String listAllCommonUsers(Model model) {
 
