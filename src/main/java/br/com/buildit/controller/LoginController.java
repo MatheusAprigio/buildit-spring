@@ -11,4 +11,9 @@ public class LoginController {
         return "signin";
     }
 
+    @GetMapping("")
+    public String getInitialSlash(){
+        return "forms/overview";
+    }
+
 }

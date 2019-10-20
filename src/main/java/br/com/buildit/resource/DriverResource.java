@@ -1,6 +1,5 @@
 package br.com.buildit.resource;
 
-import br.com.buildit.model.Customer;
 import br.com.buildit.model.Driver;
 import br.com.buildit.repository.DriverRepository;
 import io.swagger.annotations.Api;
@@ -8,8 +7,6 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import javax.persistence.EntityNotFoundException;
 
 @Api(description = "Operações para manipulação/visualização de motoristas")
 @RestController
@@ -22,7 +19,7 @@ public class DriverResource {
     @ApiOperation(value = "Retorna os dados de um motorista")
     @GetMapping("{id}")
     Driver getCustomer(@PathVariable Integer id) {
-        return driverRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(String.valueOf(id)));
+        return driverRepository.findById(id).get();
     }
 
     @ApiOperation(value = "Cria um motorista")

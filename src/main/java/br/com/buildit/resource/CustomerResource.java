@@ -1,6 +1,5 @@
 package br.com.buildit.resource;
 
-
 import br.com.buildit.model.Customer;
 import br.com.buildit.repository.CustomerRepository;
 import io.swagger.annotations.Api;
@@ -10,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
-import java.util.Optional;
 
 @Api(description = "Operações para manipulação/visualização de usuários (Clientes finais - APP)")
 @RestController
@@ -23,7 +21,7 @@ public class CustomerResource {
     @ApiOperation(value = "Retorna os dados de um usuário (Cliente final)")
     @GetMapping("{id}")
     Customer getCustomer(@PathVariable Integer id) {
-        return customerRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(String.valueOf(id)));
+        return customerRepository.findById(id).get();
     }
 
     @ApiOperation(value = "Cria um usuário (Cliente final)")
