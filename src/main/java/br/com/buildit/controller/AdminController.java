@@ -11,7 +11,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("employee")
-public class EmployeeController {
+public class AdminController {
 
     @Autowired
     EmployeeRepository employeeRepository;
@@ -33,7 +33,7 @@ public class EmployeeController {
 
     @PostMapping("admins/add")
     public String addAdmin(Employee employee, RedirectAttributes redirectAttributes) {
-        
+
         employeeRepository.save(employee);
         redirectAttributes.addFlashAttribute("msg", "Administrador cadastrado com sucesso!");
         return "redirect:list";
@@ -46,35 +46,12 @@ public class EmployeeController {
         redirectAttributes.addFlashAttribute("msg", "Administrador alterado com sucesso!");
         return "redirect:list";
     }
-    
-    @GetMapping("users/list")
-    public String listAllCommonUsers(Model model) {
 
-        model.addAttribute("users", employeeRepository.findByRole(Role.ROLE_USER));
-        return "forms/users";
+    @GetMapping("admins/list/filter")
+    public String listAdminsFilter(Model model, @RequestParam String filter) {
+
+        model.addAttribute("admins", employeeRepository.findByNameIsContainingIgnoreCaseOrEmailIsContainingIgnoreCase(filter, filter));
+        return "forms/admins";
     }
 
-    @PostMapping("users/delete")
-    public String deleteUser(Integer id, RedirectAttributes redirectAttributes) {
-
-        employeeRepository.deleteById(id);
-        redirectAttributes.addFlashAttribute("msg", "Usuário deletado com sucesso!");
-        return "redirect:list";
-    }
-
-    @PostMapping("users/add")
-    public String addUser(Employee employee, RedirectAttributes redirectAttributes) {
-
-        employeeRepository.save(employee);
-        redirectAttributes.addFlashAttribute("msg", "Usário cadastrado com sucesso!");
-        return "redirect:list";
-    }
-
-    @PostMapping("users/edit")
-    public String editUser(Employee employee, RedirectAttributes redirectAttributes) {
-
-        employeeRepository.save(employee);
-        redirectAttributes.addFlashAttribute("msg", "Usuário alterado com sucesso!");
-        return "redirect:list";
-    }
 }

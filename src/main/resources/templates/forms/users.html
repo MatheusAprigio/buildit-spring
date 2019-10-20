@@ -21,9 +21,17 @@
                     <i class="material-icons left">add_box</i>Adicionar
                 </a>
             </div>
-            <div class="col s6">
-                <!-- Barra de pesquisa aqui -->
-            </div>
+            <form action="/employee/users/list/filter" method="get">
+                <div class="input-field col s3">
+                    <input id="filter" name="filter" type="text">
+                    <label for="filter">Texto para busca ...</label>
+                </div>
+                <div class="input-field col s3">
+                    <button type="submit" class="waves-effect waves-light btn blue darken-2 "><i
+                            class="material-icons">search</i>
+                    </button>
+                </div>
+            </form>
         </div>
         <table id="table-users">
             <thead>
@@ -33,7 +41,7 @@
             <th></th>
             </thead>
             <tbody>
-            <tr th:each="user : ${users}">
+            <tr th:each="user : ${users}" th:if="${user.role.name() == 'ROLE_USER'}">
                 <td th:text="${user.name}"></td>
                 <td th:text="${user.email}"></td>
                 <td>

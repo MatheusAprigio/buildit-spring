@@ -21,7 +21,7 @@
                     <i class="material-icons left">add_box</i>Adicionar
                 </a>
             </div>
-            <form action="/employee/admins/filter" method="get">
+            <form action="/employee/admins/list/filter" method="get">
                 <div class="input-field col s3">
                     <input id="filter" name="filter" type="text">
                     <label for="filter">Texto para busca ...</label>
@@ -41,7 +41,7 @@
             <th></th>
             </thead>
             <tbody>
-            <tr th:each="admin : ${admins}" th:if="${employee.email != admin.email}">
+            <tr th:each="admin : ${admins}" th:if="${employee.email != admin.email && admin.role.name() == 'ROLE_ADMIN'}">
                 <td th:text="${admin.name}"></td>
                 <td th:text="${admin.email}"></td>
                 <td>
