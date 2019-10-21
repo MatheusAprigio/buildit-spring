@@ -15,6 +15,11 @@
     <div th:insert="fragments/dashboard"></div>
     <div class="container">
 
+        <p th:text="${'Total de pedidos ' + orders.size()}"></p>
+        <p th:text="${'Faturamento (Tudo) ' + sumOrders}"></p>
+        <p th:text="${'Total de admins ' + admin.size()}"></p>
+        <p th:text="${'Total de usuários (Caixa ) ' + user.size()}"></p>
+        <p th:text="${'Produtos cadastrados ' + products.size()}"></p>
 
     </div>
 </div>

@@ -1,6 +1,8 @@
 package br.com.buildit.resource;
 
 import br.com.buildit.model.Order;
+import br.com.buildit.model.Status;
+import br.com.buildit.repository.OrderProductRepository;
 import br.com.buildit.repository.OrderRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -18,6 +20,9 @@ public class OrderResource {
     @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
+    private OrderProductRepository orderProductRepository;
+    
     @ApiOperation(value = "Retorna uma lista com todos os pedidos de um cliente a partir do email do cliente")
     @GetMapping
     private List<Order> getAllOrdersByEmail(@RequestParam String email) {
@@ -31,10 +36,26 @@ public class OrderResource {
         return orderRepository.save(order);
     }
 
-    @ApiOperation(value = "Deleta um pedido já existente")
-    @DeleteMapping("{id}")
+    @ApiOperation(value = "Atualiza um pedido para CANCELADO a partir do id")
+    @PutMapping("cancel/{id}")
     @ResponseStatus(code = HttpStatus.OK)
-    void deleteProductById(@PathVariable Integer id) {
-        orderRepository.deleteById(id);
+    Order cancelOrder(@PathVariable Integer id) {
+
+        Order order = orderRepository.findById(id).get();
+        order.setStatus(Status.CANCELADO);
+        orderRepository.save(order);
+
+        return order;
+    }
+
+    @ApiOperation(value = "Atualiza um pedido a partir do id")
+    @PutMapping("{id}")
+    @ResponseStatus(code = HttpStatus.OK)
+    Order updateOrder(@PathVariable Integer id, Order order) {
+
+        order.setId(id);
+        orderRepository.save(order);
+
+        return order;
     }
 }
