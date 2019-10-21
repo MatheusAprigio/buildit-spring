@@ -44,9 +44,9 @@
                     <span th:text="${ 'Numero do pedido: ' + order.id + ' Cliente:' + order.customer.name + ' Data do Pedido:' + order.orderDate}"> </span>
                 </div>
                 <div class="collapsible-body">
-                    <div class="row">
-                        <div th:each="op : ${orderProduct}" th:remove="tag">
-                            <div class="col s12 m1 text-center " th:if="${op.order.id == order.id}">
+                    <div th:each="op : ${orderProduct}" th:remove="tag">
+                        <div class="row">
+                            <div class="col s12 m1 l1 text-center " th:if="${op.order.id == order.id}">
                                 <div th:if="${op.product.picture != ''}" th:remove="tag">
                                     <img class="responsive-img" th:src="${op.product.picture}" width="60px"
                                          height="60px">
@@ -56,7 +56,7 @@
                                          alt="Product IMG">
                                 </div>
                             </div>
-                            <div class="col s12 m11" th:if="${op.order.id == order.id}">
+                            <div class="col s12 m11 l11" th:if="${op.order.id == order.id}">
                                 <p th:text="${op.product.name + '  |  ' + op.product.measure + ' |  Preço Unitario: ' + op.product.unitPrice + '  |  Qtd:' + op.quantity} ">
                             </div>
                         </div>
@@ -67,8 +67,9 @@
                         <p th:text="${'Motorista: ' + order.driver.name}"></p>
                         <p th:text="${'Status: ' + order.status}"></p>
                         <div th:if="${order.status ==  T(br.com.buildit.model.Status).PREPARANDO}">
-                            <a class="waves-effect waves-light btn red darken-1 modal-trigger btn-remove" href="#remove-modal">
-                               Cancelar
+                            <a class="waves-effect waves-light btn red darken-1 modal-trigger btn-remove"
+                               href="#remove-modal">
+                                Cancelar
                             </a>
                             <input type="hidden" th:value="${order.id}">
                         </div>
