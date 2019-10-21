@@ -1,18 +1,19 @@
 package br.com.buildit.model;
 
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 
 @Entity
-@Component
 @Table(name = "TB_EMPLOYEE")
-@SequenceGenerator(name = "employee", allocationSize = 1, sequenceName = "SQ_EMPLOYEE")
-public class Employee {
+@SequenceGenerator(name = "employee", allocationSize = 1, sequenceName = "SQ_EMPLOYEE", initialValue = 4)
+public class Employee implements Serializable {
 
     @Id
-    @GeneratedValue(generator = "user", strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator = "employee", strategy = GenerationType.SEQUENCE)
     @Column(name = "cd_employee")
     private Integer id;
 

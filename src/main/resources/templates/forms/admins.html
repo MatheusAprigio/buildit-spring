@@ -41,7 +41,7 @@
             <th></th>
             </thead>
             <tbody>
-            <tr th:each="admin : ${admins}" th:if="${employee.email != admin.email && admin.role.name() == 'ROLE_ADMIN'}">
+            <tr th:each="admin : ${admins}" th:if="${#request.getUserPrincipal().name != admin.email && admin.role.name() == 'ROLE_ADMIN'}">
                 <td th:text="${admin.name}"></td>
                 <td th:text="${admin.email}"></td>
                 <td>
