@@ -15,7 +15,7 @@ public class Product {
     @Column(name = "cd_product")
     private Integer id;
 
-    @Column(name = "nm_sku", nullable = false, unique = true)
+    @Column(name = "nm_sku", nullable = false)
     private String sku;
 
     @Column(name = "fl_product", nullable = true)
@@ -32,6 +32,9 @@ public class Product {
 
     @Column(name = "vl_product", nullable = false)
     private double unitPrice;
+
+    @Column(name = "bl_active", columnDefinition = "boolean default true")
+    private Boolean isActive = true;
 
     @ManyToOne
     @JoinColumn(name = "cd_category")
@@ -113,7 +116,15 @@ public class Product {
         this.orderProducts = orderProducts;
     }
 
-    public Product(String sku, String picture, String name, String description, String measure, double unitPrice, Category category, List<OrderProduct> orderProducts) {
+    public Boolean getActive() {
+        return isActive;
+    }
+
+    public void setActive(Boolean active) {
+        isActive = active;
+    }
+
+    public Product(String sku, String picture, String name, String description, String measure, double unitPrice, Category category, List<OrderProduct> orderProducts, Boolean isActive) {
         this.sku = sku;
         this.picture = picture;
         this.name = name;
@@ -122,6 +133,7 @@ public class Product {
         this.unitPrice = unitPrice;
         this.category = category;
         this.orderProducts = orderProducts;
+        this.isActive = isActive;
     }
 
     public Product(){

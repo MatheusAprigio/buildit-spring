@@ -45,7 +45,7 @@
             <th></th>
             </thead>
             <tbody>
-            <tr th:each="product : ${products}">
+            <tr th:each="product : ${products}" th:if="${product.active == true}">
                 <td th:if="${product.picture != ''}" th:value="${product.picture}"><img class="responsive-img"
                                                                                         th:src="${product.picture}"
                                                                                         width="60px" height="60px"></td>

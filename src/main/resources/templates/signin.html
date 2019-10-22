@@ -18,6 +18,7 @@
                     <div class="card-content">
                         <form method="post" action="/signin">
                             <h4>Dashboard - Login</h4>
+                            <div class="alert alert-danger" th:if="${session[SPRING_SECURITY_LAST_EXCEPTION] != null and session[SPRING_SECURITY_LAST_EXCEPTION].message != null}">Login Inválido! Verifique os seus dados.</div>
                             <div class="row">
                                 <div class="input-field col s12">
                                     <input id="email" type="email" name="email" class="validate">

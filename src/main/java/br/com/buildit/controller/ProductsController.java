@@ -23,7 +23,7 @@ public class ProductsController {
     public String listAllProducts(Model model){
 
         model.addAttribute("categories", categoryRepository.findAll());
-        model.addAttribute("products", productRepository.findAll());
+        model.addAttribute("products", productRepository.findByIsActive(true));
         return "forms/products";
     }
 
@@ -40,7 +40,9 @@ public class ProductsController {
     @PostMapping("delete")
     public String deleteProduct(Integer id, RedirectAttributes redirectAttributes) {
 
-        productRepository.deleteById(id);
+        Product product = productRepository.findById(id).get();
+        product.setActive(false);
+        productRepository.save(product);
         redirectAttributes.addFlashAttribute("msg", "Produto deletado com sucesso!");
         return "redirect:list";
     }

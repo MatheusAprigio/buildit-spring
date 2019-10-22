@@ -16,5 +16,4 @@ public class LoginController {
     public String getInitialSlash(RedirectAttributes redirectAttributes){
         return "redirect:/order/list";
     }
-
 }
