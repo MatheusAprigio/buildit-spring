@@ -3,11 +3,12 @@ package br.com.buildit.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Entity
 @Table(name = "TB_CATEGORY")
-@SequenceGenerator(name = "category", allocationSize = 1, sequenceName = "SQ_CATEGORY")
+@SequenceGenerator(name = "category", allocationSize = 1, sequenceName = "SQ_CATEGORY", initialValue = 3)
 public class Category {
 
     @Id
@@ -15,20 +16,23 @@ public class Category {
     @Column(name = "cd_category")
     private Integer id;
 
+    @NotBlank(message = "Nome da categoria não deve estar vazio")
     @Column(name = "nm_category")
     private String name;
 
+    @NotBlank(message = "Descrição da categoria não deve estar vazio")
     @Column(name = "ds_category", nullable = true)
     private String description;
-
-    @ManyToOne
-    @JoinColumn(referencedColumnName = "cd_category")
-    private Category category;
 
     @Column(name = "cd_product")
     @OneToMany(mappedBy = "category")
     @JsonIgnore
     private List<Product> products;
+
+    @PreRemove
+    private void preRemove() {
+        products.forEach(product -> product.setCategory(null));
+    }
 
     public Integer getId() {
         return id;
@@ -54,14 +58,6 @@ public class Category {
         this.description = description;
     }
 
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
     public List<Product> getProducts() {
         return products;
     }
@@ -72,7 +68,6 @@ public class Category {
 
     public Category(String description, Category category, List<Product> products, String name) {
         this.description = description;
-        this.category = category;
         this.products = products;
         this.name = name;
     }

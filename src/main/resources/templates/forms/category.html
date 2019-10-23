@@ -16,7 +16,7 @@
     <div class="container content-dashboard">
         <div class="alert alert-success" th:if="${msg != null}" th:text="${msg}"></div>
         <div class="alert alert-danger" th:if="${errors != null}">
-            <strong>Erro ao inserir/atualizar administrador:</strong>
+            <strong>Erro ao inserir/atualizar categoria:</strong>
             <p th:each="error : ${errors}" th:text="${error.defaultMessage}"></p>
         </div>
         <div class="row">
@@ -25,7 +25,7 @@
                     <i class="material-icons left">add_box</i>Adicionar
                 </a>
             </div>
-            <form action="/employee/admins/list/filter" method="get">
+            <form action="/category/list/filter" method="get">
                 <div class="input-field col s3">
                     <input id="filter" name="filter" type="text">
                     <label for="filter">Texto para busca ...</label>
@@ -45,22 +45,21 @@
             <th></th>
             </thead>
             <tbody>
-            <tr th:each="admin : ${admins}"
-                th:if="${#request.getUserPrincipal().name != admin.email && admin.role.name() == 'ROLE_ADMIN'}">
-                <td th:text="${admin.name}"></td>
-                <td th:text="${admin.email}"></td>
+            <tr th:each="category : ${categories}">
+                <td th:text="${category.name}"></td>
+                <td th:text="${category.description}"></td>
                 <td>
                     <a class="waves-effect waves-light btn red darken-1 modal-trigger btn-remove" href="#remove-modal">
                         <i class="material-icons left">delete_forever</i>Deletar
                     </a>
-                    <input type="hidden" th:value="${admin.id}">
+                    <input type="hidden" th:value="${category.id}">
                 </td>
                 <td>
-                    <a class="waves-effect waves-light btn blue darken-2 modal-trigger btn-edit edit-admin"
+                    <a class="waves-effect waves-light btn blue darken-2 modal-trigger btn-edit edit-category"
                        href="#edit-modal">
                         <i class="material-icons left">edit</i>Atualizar
                     </a>
-                    <input type="hidden" th:value="${admin.id}">
+                    <input type="hidden" th:value="${category.id}">
                 </td>
             </tr>
             </tbody>
@@ -71,7 +70,7 @@
             <p>Você tem certeza que deseja deletar este item?</p>
         </div>
         <div class="modal-footer">
-            <form method="post" th:action="@{/employee/admins/delete}">
+            <form method="post" th:action="@{/category/delete}">
                 <input th:type="hidden" id="delete-id" name="id">
                 <button th:type="submit" class="waves-effect btn-flat">Sim</button>
                 <button th:type="button" class="modal-close waves-effect btn-flat">Não</button>
@@ -80,10 +79,9 @@
     </div>
     <div id="edit-modal" class="modal modal-small">
         <div class="modal-content center-align">
-            <h5>Atualizar administrador <i class="material-icons">person</i></h5>
-            <form method="post" th:action="@{/employee/admins/edit}">
+            <h5>Atualizar categoria <i class="material-icons">import_contacts</i></h5>
+            <form method="post" th:action="@{/category/edit}">
                 <input th:type="hidden" id="edit-id" name="id">
-                <input th:type="hidden" name="role" th:value="ROLE_ADMIN">
                 <div class="row">
                     <div class="input-field col s12">
                         <input th:type="text" id="name" name="name" value="&nbsp;">
@@ -92,14 +90,8 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input th:type="text" id="email" name="email" value="&nbsp;">
-                        <label for="email">E-mail</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input th:type="password" id="password" name="password">
-                        <label for="password">Senha</label>
+                        <textarea class="materialize-textarea" id="description" name="description"></textarea>
+                        <label>Descrição</label>
                     </div>
                 </div>
                 <div class="row">
@@ -117,25 +109,18 @@
     </div>
     <div id="add-modal" class="modal modal-small">
         <div class="modal-content center-align">
-            <h5>Adicionar administrador <i class="material-icons">person</i></h5>
-            <form method="post" th:action="@{/employee/admins/add}">
-                <input th:type="hidden" name="role" th:value="ROLE_ADMIN">
+            <h5>Adicionar categoria <i class="material-icons">import_contacts</i></h5>
+            <form method="post" th:action="@{/category/add}">
                 <div class="row">
                     <div class="input-field col s12">
-                        <input th:type="text" name="name" value="&nbsp;">
-                        <label for="name">Nome</label>
+                        <input th:type="text" name="name">
+                        <label for="name">Nome da categoria</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input th:type="text" name="email" value="&nbsp;">
-                        <label for="email">E-mail</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input th:type="password" name="password">
-                        <label for="password">Senha</label>
+                        <textarea class="materialize-textarea" id="description" name="description"></textarea>
+                        <label>Descrição</label>
                     </div>
                 </div>
                 <div class="row">

@@ -16,8 +16,8 @@
     <div class="container content-dashboard">
         <div class="alert alert-success" th:if="${msg != null}" th:text="${msg}"></div>
         <div class="row">
-            <div class="col s8">
-                <form action="/order/list/status" method="get">
+            <div class="col s12">
+                <form action="/order/list/filter" method="get">
                     <div class="col s2">
                         <label>Filtrar </label>
                         <select class="browser-default" name="status">
@@ -26,14 +26,13 @@
                                     th:text="${status}"></option>
                         </select>
                     </div>
-                    <div class="input-field col s5">
-                        <input id="filter" name="filter" type="text">
-                        <label for="filter">Texto para busca ...</label>
-                    </div>
-                    <div class="input-field col s3">
-                        <button type="submit" class="waves-effect waves-light btn blue darken-2 "><i
-                                class="material-icons">search</i>
-                        </button>
+                    <div class="col s10">
+                        <div class="search-wrapper">
+                            <input class="col s4 offset-s3" th:type="text" name="filter" placeholder="Pesquisar">
+                            <button class="btn" type="submit">
+                                <i class="material-icons">search</i>
+                            </button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -41,12 +40,12 @@
         <ul class="collapsible">
             <li th:each="order : ${orders}">
                 <div class="collapsible-header">
-                    <span th:text="${ 'Numero do pedido: ' + order.id + ' Cliente:' + order.customer.name + ' Data do Pedido:' + order.orderDate}"> </span>
+                    <span th:text="${ 'Número do pedido: ' + order.id + ' Cliente:' + order.customer.name + ' Data do Pedido:' + order.orderDate}"> </span>
                 </div>
                 <div class="collapsible-body">
-                    <div class="row">
-                        <div th:each="op : ${orderProduct}" th:remove="tag">
-                            <div class="col s12 m1 text-center " th:if="${op.order.id == order.id}">
+                    <div th:each="op : ${orderProduct}" th:remove="tag">
+                        <div class="row">
+                            <div class="col s12 m1 l1 text-center " th:if="${op.order.id == order.id}">
                                 <div th:if="${op.product.picture != ''}" th:remove="tag">
                                     <img class="responsive-img" th:src="${op.product.picture}" width="60px"
                                          height="60px">
@@ -56,16 +55,16 @@
                                          alt="Product IMG">
                                 </div>
                             </div>
-                            <div class="col s12 m11" th:if="${op.order.id == order.id}">
-                                <p th:text="${op.product.name + '  |  ' + op.product.measure + ' |  Preço Unitario: ' + op.product.unitPrice + '  |  Qtd:' + op.quantity} ">
+                            <div class="col s12 m11 l11" th:if="${op.order.id == order.id}">
+                                <p th:text="${op.product.name + '  |  ' + op.product.measure + ' |  Valor Unitário: ' + op.product.unitPrice + '  |  Qtd:' + op.quantity} ">
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <p th:text="${'Valor final: ' + order.orderValue}"></p>
-                        <p th:text="${'Endereço de entrega: ' + order.customer.address}"></p>
-                        <p th:text="${'Motorista: ' + order.driver.name}"></p>
-                        <p th:text="${'Status: ' + order.status}"></p>
+                        <p>Valor final: <span th:text="${order.orderValue}"></span></p>
+                        <p>Endereço de entrega: <span th:text="${order.customer.address}"></span></p>
+                        <p>Motorista: <span th:text="${order.driver.name}"></span></p>
+                        <p>Status: <span th:text="${order.status}"></span></p>
                         <div th:if="${order.status ==  T(br.com.buildit.model.Status).PREPARANDO}">
                             <a class="waves-effect waves-light btn red darken-1 modal-trigger btn-remove" href="#remove-modal">
                                Cancelar

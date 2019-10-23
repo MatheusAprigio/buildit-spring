@@ -1,13 +1,15 @@
 package br.com.buildit.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.util.List;
 
 @Entity
 @Table(name = "TB_PRODUCT")
-@SequenceGenerator(name = "product", allocationSize = 1, sequenceName = "SQ_PRODUCT" , initialValue = 4)
+@SequenceGenerator(name = "product", allocationSize = 1, sequenceName = "SQ_PRODUCT", initialValue = 4)
 public class Product {
 
     @Id
@@ -15,23 +17,32 @@ public class Product {
     @Column(name = "cd_product")
     private Integer id;
 
-    @Column(name = "nm_sku", nullable = false, unique = true)
+    @NotBlank(message = "SKU do produto não deve estar vazio")
+    @Size(min = 5, max = 11, message = "SKU do produto deve ter entre 5 a 11 caracteres")
+    @Column(name = "nm_sku", nullable = false)
     private String sku;
 
     @Column(name = "fl_product", nullable = true)
     private String picture;
 
+    @NotBlank(message = "Nome do produto não deve estar vazio")
     @Column(name = "nm_product", nullable = false)
     private String name;
 
+    @NotBlank(message = "Descrição do produto não pode estar vazio")
     @Column(name = "ds_product", nullable = false)
     private String description;
 
+    @NotBlank(message = "Medida do produto não pode estar vazio")
     @Column(name = "ds_measure", nullable = false)
     private String measure;
 
+
     @Column(name = "vl_product", nullable = false)
     private double unitPrice;
+
+    @Column(name = "bl_active", columnDefinition = "boolean default true")
+    private Boolean isActive = true;
 
     @ManyToOne
     @JoinColumn(name = "cd_category")
@@ -40,7 +51,7 @@ public class Product {
     @OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     @JsonIgnore
     List<OrderProduct> orderProducts;
-    
+
     public Integer getId() {
         return id;
     }
@@ -113,7 +124,15 @@ public class Product {
         this.orderProducts = orderProducts;
     }
 
-    public Product(String sku, String picture, String name, String description, String measure, double unitPrice, Category category, List<OrderProduct> orderProducts) {
+    public Boolean getActive() {
+        return isActive;
+    }
+
+    public void setActive(Boolean active) {
+        isActive = active;
+    }
+
+    public Product(String sku, String picture, String name, String description, String measure, double unitPrice, Category category, List<OrderProduct> orderProducts, Boolean isActive) {
         this.sku = sku;
         this.picture = picture;
         this.name = name;
@@ -122,9 +141,10 @@ public class Product {
         this.unitPrice = unitPrice;
         this.category = category;
         this.orderProducts = orderProducts;
+        this.isActive = isActive;
     }
 
-    public Product(){
+    public Product() {
 
     }
 }

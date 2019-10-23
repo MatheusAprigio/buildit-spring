@@ -15,15 +15,27 @@
     <div th:insert="fragments/dashboard"></div>
     <div class="container content-dashboard">
         <div class="alert alert-success" th:if="${msg != null}" th:text="${msg}"></div>
+        <div class="alert alert-danger" th:if="${errors != null}">
+            <strong>Erro ao inserir/atualizar usuário(Caixa):</strong>
+            <p th:each="error : ${errors}" th:text="${error.defaultMessage}"></p>
+        </div>
         <div class="row">
             <div class="col s6">
                 <a class="waves-effect waves-light btn green darken-1 modal-trigger" href="#add-modal">
                     <i class="material-icons left">add_box</i>Adicionar
                 </a>
             </div>
-            <div class="col s6">
-                <!-- Barra de pesquisa aqui -->
-            </div>
+            <form action="/employee/users/list/filter" method="get">
+                <div class="input-field col s3">
+                    <input id="filter" name="filter" type="text">
+                    <label for="filter">Texto para busca ...</label>
+                </div>
+                <div class="input-field col s3">
+                    <button type="submit" class="btn"><i
+                            class="material-icons">search</i>
+                    </button>
+                </div>
+            </form>
         </div>
         <table id="table-users">
             <thead>
@@ -33,7 +45,7 @@
             <th></th>
             </thead>
             <tbody>
-            <tr th:each="user : ${users}">
+            <tr th:each="user : ${users}" th:if="${user.role.name() == 'ROLE_USER'}">
                 <td th:text="${user.name}"></td>
                 <td th:text="${user.email}"></td>
                 <td>

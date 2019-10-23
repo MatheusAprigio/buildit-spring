@@ -1,27 +1,38 @@
 package br.com.buildit.model;
 
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 
 @Entity
-@Component
 @Table(name = "TB_EMPLOYEE")
-@SequenceGenerator(name = "employee", allocationSize = 1, sequenceName = "SQ_EMPLOYEE")
-public class Employee {
+@SequenceGenerator(name = "employee", allocationSize = 1, sequenceName = "SQ_EMPLOYEE", initialValue = 4)
+public class Employee implements Serializable {
 
     @Id
-    @GeneratedValue(generator = "user", strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator = "employee", strategy = GenerationType.SEQUENCE)
     @Column(name = "cd_employee")
     private Integer id;
 
+    @Email(message = "O campo e-mail deve conter um @")
+    @NotBlank(message = "O campo e-mail não pode estar vazio")
+    @Size(min = 4, message = "O campo e-mail deve conter no mínimo 4 dígitos")
     @Column(name = "ds_email", nullable = false, unique = true)
     private String email;
 
+    @NotBlank(message = "O campo nome não pode estar vazio")
+    @Size(min = 3, max = 20, message = "O campo nome deve conter no mínimo 3 dígitos e no máximo 20 dígitos")
     @Column(name="nm_employee", nullable = false)
     private String name;
 
+    @NotBlank(message = "O campo senha não pode estar vazio")
+    @Size(min = 6, message = "O campo nome deve conter no mínimo 6 dígitos")
     @Column(name = "ds_pwd", nullable = false)
     private String password;
 

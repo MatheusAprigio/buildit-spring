@@ -16,6 +16,8 @@ public interface ProductRepository extends JpaRepository <Product, Integer> {
 
     List<Product> findBySkuIsContainingIgnoreCaseOrNameIsContainingIgnoreCaseOrCategory_NameIsContainingIgnoreCaseOrDescriptionIsContainingIgnoreCaseOrMeasureIsContainingIgnoreCase(String sku, String name, String categoryName, String description, String measure);
 
+    List<Product> findByIsActive(Boolean isActive);
+
     @Query("select count(p.id) from Product p")
     String sumNumProducts();
 }

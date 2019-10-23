@@ -32,9 +32,9 @@ public class OverviewController {
 
         model.addAttribute("orders", orderRepository.findAll());
         model.addAttribute("sumOrders", orderRepository.sumOrdersTotal());
-        model.addAttribute("admin", employeeRepository.sumEmployeeByRole(Role.ROLE_ADMIN));
-        model.addAttribute("user", employeeRepository.sumEmployeeByRole(Role.ROLE_USER));
-        model.addAttribute("sumProducts", productRepository.sumNumProducts());
+        model.addAttribute("admin", employeeRepository.findByRole(Role.ROLE_ADMIN));
+        model.addAttribute("user", employeeRepository.findByRole(Role.ROLE_USER));
+        model.addAttribute("products", productRepository.findAll());
         return "forms/overview";
     }
 }

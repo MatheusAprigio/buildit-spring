@@ -1,6 +1,5 @@
 package br.com.buildit.resource;
 
-
 import br.com.buildit.model.Product;
 import br.com.buildit.repository.ProductRepository;
 import io.swagger.annotations.Api;

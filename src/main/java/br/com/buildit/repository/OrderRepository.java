@@ -3,7 +3,6 @@ package br.com.buildit.repository;
 import br.com.buildit.model.Order;
 import br.com.buildit.model.Status;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 

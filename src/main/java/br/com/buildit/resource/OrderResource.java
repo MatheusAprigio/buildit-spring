@@ -1,7 +1,6 @@
 package br.com.buildit.resource;
 
 import br.com.buildit.model.Order;
-import br.com.buildit.model.OrderProduct;
 import br.com.buildit.model.Status;
 import br.com.buildit.repository.OrderProductRepository;
 import br.com.buildit.repository.OrderRepository;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @Api(description = "Operações para manipulação/visualização de pedidos de compra")
@@ -43,7 +41,7 @@ public class OrderResource {
     @ResponseStatus(code = HttpStatus.OK)
     Order cancelOrder(@PathVariable Integer id) {
 
-        Order order = orderRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(String.valueOf(id)));
+        Order order = orderRepository.findById(id).get();
         order.setStatus(Status.CANCELADO);
         orderRepository.save(order);
 

@@ -17,6 +17,5 @@ public interface EmployeeRepository extends JpaRepository <Employee, Integer> {
 
     List<Employee> findByRole(Role role);
 
-    @Query("select count(e) from Employee e where e.role = ?1")
-    String sumEmployeeByRole(Role role);
+    List<Employee> findByNameIsContainingIgnoreCaseOrEmailIsContainingIgnoreCase(String name, String email);
 }

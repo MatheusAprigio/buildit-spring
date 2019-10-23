@@ -1,14 +1,14 @@
-INSERT INTO TB_CATEGORY values (1, 'Category description', 'Principal', null);
-INSERT INTO TB_CATEGORY values (2, 'Category description', 'Others', 1);
+INSERT INTO TB_CATEGORY values (1, 'Category description', 'Principal');
+INSERT INTO TB_CATEGORY values (2, 'Category description', 'Others');
 
 
-INSERT INTO TB_PRODUCT values(1, 'Just an example of a product description Just an example of a product description', '8"', 'Alicate universal 8" em aço carbono', '', 'BD0001', 19.50, 1);
-INSERT INTO TB_PRODUCT values(2, 'Just an example of a product description', '1 Un/ 18L', 'Tinta Coral Acrilica Fosca', 'erro', 'BD0002', 279.90, 1);
-INSERT INTO TB_PRODUCT values(3, 'Just an example of a product description', '30 x 30', 'Tijolo', 'https://appsisecommerces3.s3.amazonaws.com/clientes/cliente11837/produtos/7274/Z8569.jpg', 'BD0003', 3.00, 2);
+INSERT INTO TB_PRODUCT values(1, 'Just an example of a product description Just an example of a product description',true, '8"', 'Alicate universal 8" em aço carbono', '', 'BD0001', 19.50, 1);
+INSERT INTO TB_PRODUCT values(2, 'Just an example of a product description', true,'1 Un/ 18L', 'Tinta Coral Acrilica Fosca', 'erro', 'BD0002', 279.90, 1);
+INSERT INTO TB_PRODUCT values(3, 'Just an example of a product description', true,'30 x 30', 'Tijolo', 'https://appsisecommerces3.s3.amazonaws.com/clientes/cliente11837/produtos/7274/Z8569.jpg', 'BD0003', 3.00, 2);
 
 INSERT INTO TB_EMPLOYEE values (1, 'buildit@fiap.com.br','Matheus','nimda','ROLE_ADMIN');
-INSERT INTO TB_EMPLOYEE values (4, 'admin@fiap.com.br','Thiago','nimda','ROLE_ADMIN');
-INSERT INTO TB_EMPLOYEE values (2, 'user@fiap.com.br','Ana Julia','user','ROLE_USER');
+INSERT INTO TB_EMPLOYEE values (2, 'admin@fiap.com.br','Thiago','nimda','ROLE_ADMIN');
+INSERT INTO TB_EMPLOYEE values (3, 'user@fiap.com.br','Ana Julia','user','ROLE_USER');
 
 
 INSERT  INTO TB_CUSTOMER values (1, 'AV JUNDIAI, 69 - Apto 190', {ts '1997-12-24 18:47:52.69'}, '42933007643', 'customer@gmail.com', 'Augusta','customer', '(11)99113-3700', null);

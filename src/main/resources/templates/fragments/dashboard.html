@@ -15,14 +15,13 @@
     </div>
     <div id="container">
         <div id="menu">
-            <ul id="slide-out" class="side-nav fixed show-on-large-only side-buildit">
+            <ul id="slide-out" class="side-nav fixed hide-on-med-and-down hide-on-larges side-buildit">
                 <li><img class="brand-logo" th:src="@{/image/logo-buildIT.jpg}" alt="Logo Build It"></li>
-                <li><span th:text="${'Olá, ' + employee.name}"></span></li>
                 <li><a href="/order/list"><i class="material-icons">local_grocery_store</i>Pedidos</a></li>
-                <div th:if="${employee.role == T(br.com.buildit.model.Role).ROLE_ADMIN}">
+                <div th:if="${#request.isUserInRole('ROLE_ADMIN')}">
                     <li><a href="/products/list"><i class="material-icons">label</i>Produtos</a></li>
                 </div>
-                <div th:if="${employee.role == T(br.com.buildit.model.Role).ROLE_ADMIN}">
+                <div th:if="${#request.isUserInRole('ROLE_ADMIN')}">
                     <li>
                         <ul class="collapsible collapsible-accordion">
                             <li>
@@ -39,10 +38,13 @@
                         </ul>
                     </li>
                 </div>
-                <div th:if="${employee.role == T(br.com.buildit.model.Role).ROLE_ADMIN}">
+                <div th:if="${#request.isUserInRole('ROLE_ADMIN')}">
                     <li><a href="/overview"><i class="material-icons">pie_chart</i>Visão Geral</a></li>
                 </div>
-                <li><a href="/"><i class="material-icons">adjust</i>Configurações</a></li>
+                <div th:if="${#request.isUserInRole('ROLE_ADMIN')}">
+                    <li><a href="/category/list"><i class="material-icons">import_contacts</i>Categorias</a>
+                    </li>
+                </div>
             </ul>
         </div>
     </div>
