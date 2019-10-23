@@ -16,7 +16,7 @@
     <div class="container content-dashboard">
         <div class="alert alert-success" th:if="${msg != null}" th:text="${msg}"></div>
         <div class="row">
-            <div class="col s8">
+            <div class="col s12">
                 <form action="/order/list/status" method="get">
                     <div class="col s2">
                         <label>Filtrar </label>
@@ -26,14 +26,15 @@
                                     th:text="${status}"></option>
                         </select>
                     </div>
-                    <div class="input-field col s5">
-                        <input id="filter" name="filter" type="text">
-                        <label for="filter">Texto para busca ...</label>
-                    </div>
-                    <div class="input-field col s3">
-                        <button type="submit" class="waves-effect waves-light btn blue darken-2 "><i
-                                class="material-icons">search</i>
-                        </button>
+                    <div class="col s10">
+                        <div class="search-wrapper">
+                            <form method="get" th:action="@{/order/list/filter}">
+                                <input class="col s4 offset-s3" th:type="text" name="filter" placeholder="Pesquisar">
+                                <button class="btn" type="submit">
+                                    <i class="material-icons">search</i>
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -41,7 +42,7 @@
         <ul class="collapsible">
             <li th:each="order : ${orders}">
                 <div class="collapsible-header">
-                    <span th:text="${ 'Numero do pedido: ' + order.id + ' Cliente:' + order.customer.name + ' Data do Pedido:' + order.orderDate}"> </span>
+                    <span th:text="${ 'Número do pedido: ' + order.id + ' Cliente:' + order.customer.name + ' Data do Pedido:' + order.orderDate}"> </span>
                 </div>
                 <div class="collapsible-body">
                     <div th:each="op : ${orderProduct}" th:remove="tag">
@@ -57,7 +58,7 @@
                                 </div>
                             </div>
                             <div class="col s12 m11 l11" th:if="${op.order.id == order.id}">
-                                <p th:text="${op.product.name + '  |  ' + op.product.measure + ' |  Preço Unitario: ' + op.product.unitPrice + '  |  Qtd:' + op.quantity} ">
+                                <p th:text="${op.product.name + '  |  ' + op.product.measure + ' |  Valor Unitário: ' + op.product.unitPrice + '  |  Qtd:' + op.quantity} ">
                             </div>
                         </div>
                     </div>

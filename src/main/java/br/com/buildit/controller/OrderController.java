@@ -28,7 +28,7 @@ public class OrderController {
         return "forms/orders";
     }
 
-    @GetMapping("list/status")
+    @GetMapping("list/filter")
     public String listOrdersFilter(@RequestParam String status, @RequestParam String filter, Model model) {
 
         if (status.equals("NENHUM") && !filter.isEmpty()) {
