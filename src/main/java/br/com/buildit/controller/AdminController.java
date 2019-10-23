@@ -6,8 +6,11 @@ import br.com.buildit.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.validation.Valid;
 
 
 @Controller
@@ -33,7 +36,12 @@ public class AdminController {
     }
 
     @PostMapping("admins/add")
-    public String addAdmin(Employee employee, RedirectAttributes redirectAttributes) {
+    public String addAdmin(@Valid Employee employee, BindingResult result, RedirectAttributes redirectAttributes) {
+
+        if (result.hasErrors()) {
+            redirectAttributes.addFlashAttribute("errors", result.getAllErrors());
+            return "redirect:list";
+        }
 
         employeeRepository.save(employee);
         redirectAttributes.addFlashAttribute("msg", "Administrador cadastrado com sucesso!");
@@ -41,7 +49,13 @@ public class AdminController {
     }
 
     @PostMapping("admins/edit")
-    public String editAdmin(Employee employee, RedirectAttributes redirectAttributes) {
+    public String editAdmin(@Valid Employee employee, BindingResult result, RedirectAttributes redirectAttributes) {
+
+
+        if (result.hasErrors()) {
+            redirectAttributes.addFlashAttribute("errors", result.getAllErrors());
+            return "redirect:list";
+        }
 
         employeeRepository.save(employee);
         redirectAttributes.addFlashAttribute("msg", "Administrador alterado com sucesso!");

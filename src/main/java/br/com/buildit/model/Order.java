@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name=" TB_ORDER")
-@SequenceGenerator(name ="order", allocationSize = 1, sequenceName = "SQ_ORDER")
+@SequenceGenerator(name ="order", allocationSize = 1, sequenceName = "SQ_ORDER", initialValue = 3)
 public class Order {
 
     @Id

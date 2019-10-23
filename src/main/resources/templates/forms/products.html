@@ -15,6 +15,10 @@
     <div th:insert="fragments/dashboard"></div>
     <div class="container content-dashboard">
         <div class="alert alert-success" th:if="${msg != null}" th:text="${msg}"></div>
+        <div class="alert alert-danger" th:if="${errors != null}">
+            <strong>Error ao inserir/atualizar produto:</strong>
+            <p th:each="error : ${errors}" th:text="${error.defaultMessage}"></p>
+        </div>
         <div class="row">
             <div class="col s6">
                 <a class="waves-effect waves-light btn green darken-1 modal-trigger" href="#add-modal">
@@ -56,7 +60,7 @@
                 <td class="truncate" th:text="${product.description}"></td>
                 <td th:text="${product.category.name}"></td>
                 <td th:text="${product.measure}"></td>
-                <td th:text="${'R$' + product.unitPrice}"></td>
+                <td th:text="${'R$ ' + product.unitPrice}"></td>
                 <td>
                     <a class="waves-effect waves-light btn red darken-1 modal-trigger btn-remove" href="#remove-modal">
                         <i class="material-icons">delete_forever</i>
@@ -162,7 +166,7 @@
                             <label>URL da imagem:</label>
                         </div>
                         <div class="input-field">
-                            <input th:type="text" name="name">
+                            <input type="text" name="name">
                             <label for="name">Nome:</label>
                         </div>
                     </div>

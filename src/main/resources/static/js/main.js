@@ -53,12 +53,12 @@ $(".edit-product").click(function () {
     var email = $(this).closest("tr").find('td:eq(2)').text();
     $("#name").val(email)
 
-    var userName = $(this).closest("tr").find('td:eq(3)').text();
-    $("#description").val(userName);
+    var description = $(this).closest("tr").find('td:eq(3)').text();
+    $("#description").val(description);
 
-    var userName = $(this).closest("tr").find('td:eq(5)').text();
-    $("#measure").val(userName);
+    var measure = $(this).closest("tr").find('td:eq(5)').text();
+    $("#measure").val(measure);
 
-    var userName = $(this).closest("tr").find('td:eq(6)').text();
-    $("#unitPrice").val(userName);
+    var unitPrice = $(this).closest("tr").find('td:eq(6)').text().replace('R$ ', '');
+    $("#unitPrice").val(unitPrice);
 });

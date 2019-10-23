@@ -3,11 +3,15 @@ package br.com.buildit.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
 @Table(name = "TB_PRODUCT")
-@SequenceGenerator(name = "product", allocationSize = 1, sequenceName = "SQ_PRODUCT" , initialValue = 4)
+@SequenceGenerator(name = "product", allocationSize = 1, sequenceName = "SQ_PRODUCT", initialValue = 4)
 public class Product {
 
     @Id
@@ -15,18 +19,23 @@ public class Product {
     @Column(name = "cd_product")
     private Integer id;
 
+    @NotBlank(message = "SKU do produto não deve estar vazio")
+    @Size(min = 5, max = 11, message = "SKU do produto deve ter entre 5 a 11 caracteres")
     @Column(name = "nm_sku", nullable = false)
     private String sku;
 
     @Column(name = "fl_product", nullable = true)
     private String picture;
 
+    @NotBlank(message = "Nome do produto não deve estar vazio")
     @Column(name = "nm_product", nullable = false)
     private String name;
 
+    @NotBlank(message = "Descrição do produto não pode estar vazio")
     @Column(name = "ds_product", nullable = false)
     private String description;
 
+    @NotBlank(message = "Medida do produto não pode estar vazio")
     @Column(name = "ds_measure", nullable = false)
     private String measure;
 
@@ -43,7 +52,7 @@ public class Product {
     @OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     @JsonIgnore
     List<OrderProduct> orderProducts;
-    
+
     public Integer getId() {
         return id;
     }
@@ -136,7 +145,7 @@ public class Product {
         this.isActive = isActive;
     }
 
-    public Product(){
+    public Product() {
 
     }
 }
