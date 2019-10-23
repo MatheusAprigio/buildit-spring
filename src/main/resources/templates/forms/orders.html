@@ -61,14 +61,13 @@
                         </div>
                     </div>
                     <div class="row">
-                        <p th:text="${'Valor final: ' + order.orderValue}"></p>
-                        <p th:text="${'Endereço de entrega: ' + order.customer.address}"></p>
-                        <p th:text="${'Motorista: ' + order.driver.name}"></p>
-                        <p th:text="${'Status: ' + order.status}"></p>
+                        <p>Valor final: <span th:text="${order.orderValue}"></span></p>
+                        <p>Endereço de entrega: <span th:text="${order.customer.address}"></span></p>
+                        <p>Motorista: <span th:text="${order.driver.name}"></span></p>
+                        <p>Status: <span th:text="${order.status}"></span></p>
                         <div th:if="${order.status ==  T(br.com.buildit.model.Status).PREPARANDO}">
-                            <a class="waves-effect waves-light btn red darken-1 modal-trigger btn-remove"
-                               href="#remove-modal">
-                                Cancelar
+                            <a class="waves-effect waves-light btn red darken-1 modal-trigger btn-remove" href="#remove-modal">
+                               Cancelar
                             </a>
                             <input type="hidden" th:value="${order.id}">
                         </div>

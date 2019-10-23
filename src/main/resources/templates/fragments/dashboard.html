@@ -15,7 +15,7 @@
     </div>
     <div id="container">
         <div id="menu">
-            <ul id="slide-out" class="side-nav fixed show-on-large-only side-buildit">
+            <ul id="slide-out" class="side-nav fixed hide-on-med-and-down hide-on-larges side-buildit">
                 <li><img class="brand-logo" th:src="@{/image/logo-buildIT.jpg}" alt="Logo Build It"></li>
                 <li><a href="/order/list"><i class="material-icons">local_grocery_store</i>Pedidos</a></li>
                 <div th:if="${#request.isUserInRole('ROLE_ADMIN')}">

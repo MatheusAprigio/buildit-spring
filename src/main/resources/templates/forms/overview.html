@@ -14,13 +14,38 @@
 <div layout:fragment="content" th:remove="tag">
     <div th:insert="fragments/dashboard"></div>
     <div class="container">
-
-        <p th:text="${'Total de pedidos ' + orders.size()}"></p>
-        <p th:text="${'Faturamento (Tudo) ' + sumOrders}"></p>
-        <p th:text="${'Total de admins ' + admin.size()}"></p>
-        <p th:text="${'Total de usuários (Caixa ) ' + user.size()}"></p>
-        <p th:text="${'Produtos cadastrados ' + products.size()}"></p>
-
+        <div class="row">
+            <div class="col s6">
+                <div class="product-container center-align">
+                    <i class="material-icons large">add_shopping_cart</i>
+                    <p class="product-text">Total de pedidos:</p>
+                    <span class="product-text-number center-align" th:text="${orders.size()}"></span>
+                </div>
+            </div>
+            <div class="col s6">
+                <div class="product-container center-align">
+                    <i class="material-icons large">attach_money</i>
+                    <p class="product-text">Faturamento:</p>
+                    <span class="product-text-number center-align" th:text="${sumOrders}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s6">
+                <div class="product-container center-align">
+                    <i class="material-icons large">fingerprint</i>
+                    <p class="product-text">Total de admins:</p>
+                    <span class="product-text-number center-align" th:text="${admin.size()}"></span>
+                </div>
+            </div>
+            <div class="col s6">
+                <div class="product-container large center-align">
+                    <i class="material-icons large">local_hospital</i>
+                    <p class="product-text">Total de usuários:</p>
+                    <span class="product-text-number center-align" th:text="${user.size()}"></span>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </body>
