@@ -17,7 +17,7 @@
         <div class="alert alert-success" th:if="${msg != null}" th:text="${msg}"></div>
         <div class="row">
             <div class="col s12">
-                <form action="/order/list/status" method="get">
+                <form action="/order/list/filter" method="get">
                     <div class="col s2">
                         <label>Filtrar </label>
                         <select class="browser-default" name="status">
@@ -28,12 +28,10 @@
                     </div>
                     <div class="col s10">
                         <div class="search-wrapper">
-                            <form method="get" th:action="@{/order/list/filter}">
-                                <input class="col s4 offset-s3" th:type="text" name="filter" placeholder="Pesquisar">
-                                <button class="btn" type="submit">
-                                    <i class="material-icons">search</i>
-                                </button>
-                            </form>
+                            <input class="col s4 offset-s3" th:type="text" name="filter" placeholder="Pesquisar">
+                            <button class="btn" type="submit">
+                                <i class="material-icons">search</i>
+                            </button>
                         </div>
                     </div>
                 </form>
