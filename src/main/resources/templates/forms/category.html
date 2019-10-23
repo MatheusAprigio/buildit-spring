@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/general}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Build It - Dashboard</title>
+</head>
+<body>
+<div layout:fragment="content" th:remove="tag">
+    <div th:insert="fragments/dashboard"></div>
+    <div class="container content-dashboard">
+        <div class="alert alert-success" th:if="${msg != null}" th:text="${msg}"></div>
+        <div class="alert alert-danger" th:if="${errors != null}">
+            <strong>Erro ao inserir/atualizar categoria:</strong>
+            <p th:each="error : ${errors}" th:text="${error.defaultMessage}"></p>
+        </div>
+        <div class="row">
+            <div class="col s6">
+                <a class="waves-effect waves-light btn green darken-1 modal-trigger" href="#add-modal">
+                    <i class="material-icons left">add_box</i>Adicionar
+                </a>
+            </div>
+            <form action="/category/list/filter" method="get">
+                <div class="input-field col s3">
+                    <input id="filter" name="filter" type="text">
+                    <label for="filter">Texto para busca ...</label>
+                </div>
+                <div class="input-field col s3">
+                    <button type="submit" class="btn"><i
+                            class="material-icons">search</i>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <table id="table-admins">
+            <thead>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th></th>
+            <th></th>
+            </thead>
+            <tbody>
+            <tr th:each="category : ${categories}">
+                <td th:text="${category.name}"></td>
+                <td th:text="${category.description}"></td>
+                <td>
+                    <a class="waves-effect waves-light btn red darken-1 modal-trigger btn-remove" href="#remove-modal">
+                        <i class="material-icons left">delete_forever</i>Deletar
+                    </a>
+                    <input type="hidden" th:value="${category.id}">
+                </td>
+                <td>
+                    <a class="waves-effect waves-light btn blue darken-2 modal-trigger btn-edit edit-category"
+                       href="#edit-modal">
+                        <i class="material-icons left">edit</i>Atualizar
+                    </a>
+                    <input type="hidden" th:value="${category.id}">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="remove-modal" class="modal modal-remove">
+        <div class="modal-content">
+            <p>Você tem certeza que deseja deletar este item?</p>
+        </div>
+        <div class="modal-footer">
+            <form method="post" th:action="@{/category/delete}">
+                <input th:type="hidden" id="delete-id" name="id">
+                <button th:type="submit" class="waves-effect btn-flat">Sim</button>
+                <button th:type="button" class="modal-close waves-effect btn-flat">Não</button>
+            </form>
+        </div>
+    </div>
+    <div id="edit-modal" class="modal modal-small">
+        <div class="modal-content center-align">
+            <h5>Atualizar categoria <i class="material-icons">import_contacts</i></h5>
+            <form method="post" th:action="@{/category/edit}">
+                <input th:type="hidden" id="edit-id" name="id">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input th:type="text" id="name" name="name" value="&nbsp;">
+                        <label for="name">Nome</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea class="materialize-textarea" id="description" name="description"></textarea>
+                        <label>Descrição</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s6">
+                        <button th:type="button" class="modal-close waves-effect btn-flat red darken-1 white-text">
+                            Cancelar
+                        </button>
+                    </div>
+                    <div class="col s6">
+                        <button th:type="submit" class="waves-effect btn-flat blue darken-2 white-text">Salvar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="add-modal" class="modal modal-small">
+        <div class="modal-content center-align">
+            <h5>Adicionar categoria <i class="material-icons">import_contacts</i></h5>
+            <form method="post" th:action="@{/category/add}">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input th:type="text" name="name">
+                        <label for="name">Nome da categoria</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea class="materialize-textarea" id="description" name="description"></textarea>
+                        <label>Descrição</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s6">
+                        <button th:type="button" class="modal-close waves-effect btn-flat red darken-1 white-text">
+                            Cancelar
+                        </button>
+                    </div>
+                    <div class="col s6">
+                        <button th:type="submit" class="waves-effect btn-flat blue darken-2 white-text">Adicionar
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

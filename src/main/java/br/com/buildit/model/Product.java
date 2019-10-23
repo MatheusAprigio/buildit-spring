@@ -37,8 +37,7 @@ public class Product {
     @Column(name = "ds_measure", nullable = false)
     private String measure;
 
-    @NotBlank(message = "Valor unitário do produto não pode estar vazio")
-    @Min(value = 0, message = "Valor do produto nao deve ser negativo")
+
     @Column(name = "vl_product", nullable = false)
     private double unitPrice;
 

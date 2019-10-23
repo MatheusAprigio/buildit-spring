@@ -62,3 +62,11 @@ $(".edit-product").click(function () {
     var unitPrice = $(this).closest("tr").find('td:eq(6)').text().replace('R$ ', '');
     $("#unitPrice").val(unitPrice);
 });
+
+$(".edit-category").click(function () {
+    var userName = $(this).closest("tr").find('td:eq(0)').text();
+    $("#name").val(userName);
+
+    var description = $(this).closest("tr").find('td:eq(1)').text();
+    $("#description").val(description)
+});

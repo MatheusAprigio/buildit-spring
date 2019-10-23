@@ -41,6 +41,10 @@
                 <div th:if="${#request.isUserInRole('ROLE_ADMIN')}">
                     <li><a href="/overview"><i class="material-icons">pie_chart</i>Visão Geral</a></li>
                 </div>
+                <div th:if="${#request.isUserInRole('ROLE_ADMIN')}">
+                    <li><a href="/category/list"><i class="material-icons">import_contacts</i>Categorias</a>
+                    </li>
+                </div>
             </ul>
         </div>
     </div>

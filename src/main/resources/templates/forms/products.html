@@ -58,7 +58,8 @@
                 <td th:text="${product.sku}"></td>
                 <td th:text="${product.name}"></td>
                 <td class="truncate" th:text="${product.description}"></td>
-                <td th:text="${product.category.name}"></td>
+                <td th:if="${product.category != null}" th:text="${product.category.name}"></td>
+                <td th:if="${product.category == null}"> SEM CATEGORIA</td>
                 <td th:text="${product.measure}"></td>
                 <td th:text="${'R$ ' + product.unitPrice}"></td>
                 <td>

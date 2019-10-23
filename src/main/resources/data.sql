@@ -1,5 +1,5 @@
-INSERT INTO TB_CATEGORY values (1, 'Category description', 'Principal', null);
-INSERT INTO TB_CATEGORY values (2, 'Category description', 'Others', 1);
+INSERT INTO TB_CATEGORY values (1, 'Category description', 'Principal');
+INSERT INTO TB_CATEGORY values (2, 'Category description', 'Others');
 
 
 INSERT INTO TB_PRODUCT values(1, 'Just an example of a product description Just an example of a product description',true, '8"', 'Alicate universal 8" em aço carbono', '', 'BD0001', 19.50, 1);
