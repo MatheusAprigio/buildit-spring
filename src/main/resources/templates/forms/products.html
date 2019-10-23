@@ -52,7 +52,7 @@
             <tr th:each="product : ${products}" th:if="${product.active == true}">
                 <td th:if="${product.picture != ''}" th:value="${product.picture}"><img class="responsive-img"
                                                                                         th:src="${product.picture}"
-                                                                                        width="60px" height="60px"></td>
+                                                                                        width="60px" height="60px"  th:onerror="'this.src=\'' + @{/image/no-image.svg} + '\';'"></td>
                 <td th:if="${product.picture == ''}"><img class="responsive-img" src="/image/no-image.svg" width="60px"
                                                           height="60px" alt="Product IMG"></td>
                 <td th:text="${product.sku}"></td>
