@@ -16,7 +16,7 @@
     <div class="container content-dashboard">
         <div class="alert alert-success" th:if="${msg != null}" th:text="${msg}"></div>
         <div class="alert alert-danger" th:if="${errors != null}">
-            <strong>Error ao inserir/atualizar usuário(Caixa):</strong>
+            <strong>Erro ao inserir/atualizar usuário(Caixa):</strong>
             <p th:each="error : ${errors}" th:text="${error.defaultMessage}"></p>
         </div>
         <div class="row">

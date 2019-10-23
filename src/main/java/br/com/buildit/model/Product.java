@@ -1,12 +1,10 @@
 package br.com.buildit.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.List;
 
 @Entity
@@ -39,6 +37,8 @@ public class Product {
     @Column(name = "ds_measure", nullable = false)
     private String measure;
 
+    @NotBlank(message = "Valor unitário do produto não pode estar vazio")
+    @Min(value = 0, message = "Valor do produto nao deve ser negativo")
     @Column(name = "vl_product", nullable = false)
     private double unitPrice;
 

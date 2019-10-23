@@ -16,7 +16,7 @@
     <div class="container content-dashboard">
         <div class="alert alert-success" th:if="${msg != null}" th:text="${msg}"></div>
         <div class="alert alert-danger" th:if="${errors != null}">
-            <strong>Error ao inserir/atualizar produto:</strong>
+            <strong>Erro ao inserir/atualizar produto:</strong>
             <p th:each="error : ${errors}" th:text="${error.defaultMessage}"></p>
         </div>
         <div class="row">
@@ -128,7 +128,7 @@
 
                     </div>
                     <div class="input-field col s3">
-                        <input th:type="text" name="unitPrice" id="unitPrice" value="&nbsp;">
+                        <input th:type="number" name="unitPrice" id="unitPrice" value="&nbsp;" step=".01">
                         <label>Valor Un.</label>
                     </div>
                 </div>
@@ -189,7 +189,7 @@
 
                     </div>
                     <div class="input-field col s3">
-                        <input th:type="text" name="unitPrice">
+                        <input th:type="number" name="unitPrice" step=".01">
                         <label>Valor Un.</label>
                     </div>
                 </div>
